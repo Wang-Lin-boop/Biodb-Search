@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodatabase_Search</title>
+<link href="css/bootstrap-4.0.0.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function openurl(prefix,postfix){
+	var url= prefix + document.getElementById("textinput").value + postfix
+	window.open(url)
+	}
+	</script>
+</head>
+<body>
+
+<table width="2000" border="0" cellpadding="50">
+  <tbody>
+    <tr>
+      <td>
+
+<div data-role="page" id="page"><ol>
+<div data-role="header">
+       <h1><b>Bio-Database Search Tab</b></h1>
+		 <p> Thank you for your use, If you have any problems, please feel free to contact us.</p>
+		 <p> Email: wanglin3@shanghaitech.edu.cn </p>
+		 <hr><hr>
+</div>
+ <div data-role="content">
+       <div data-role="fieldcontain">
+         <ol>
+		   <label for="textinput"><h5>Search Text :  </h5></label>
+         <input name="textinput" type="text" id="textinput" placeholder="Text type in here" size="50" maxlength="5000" height="30" hspace="3000" style="border:1.5px solid #378888"/></ol>  
+       </div>
+ </div>
+		   
+<div name="chinese-notice"><hr><ol>
+	<section><b>在上方检索框内输入要检索的英文关键词   Enter the English keywords to retrieve in the search box above</b></section>
+	<section><b>点击下方图标即可在相应数据库中搜索    Click on the icon below to search in the appropriate database</b></section><hr></ol> 
+</div>
+
+<ol><b>
+	<p>Compounds and Drug database</p>
+	<ol>
+	<img src="./logo/PubChem.png" width="120" height="45" alt="" onClick="openurl('https://pubchem.ncbi.nlm.nih.gov/',' ')"/>
+	<img src="logo/DrugBank.png" width="120" height="45" alt="" onClick="openurl('https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=drugs')"/>
+	<img src="logo/BindingDB.png" width="120" height="45" alt="" onClick="openurl('https://www.bindingdb.org/bind/tabLuceneResult.jsp?thisInput=','&submit=Go')"/>
+	<img src="logo/IUPHAR.png" width="120" height="45" alt="" onClick="openurl('https://www.guidetopharmacology.org/GRAC/DatabaseSearchForward?searchString=','&searchCategories=all&species=none&type=all&comments=includeComments&order=rank&submit=Search+Database')"/>
+	</ol><hr>
+	<p>Papar and wiki</p>
+	<ol>
+	<img src="./logo/Pubmed.png" width="120" height="45" alt="" onClick="openurl('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
+	<img src="logo/Wikipedia.png" width="120" height="45" alt="" onClick="openurl('https://en.wikipedia.org/wiki/',' ')"/>
+	<img src="logo/Gen-lib.png" width="120" height="45" alt="" onClick="openurl('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
+	<img src="logo/OBRC.png" width="120" height="45" alt="" onClick="openurl('http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=','&v%3Aproject=obrc&submit=Search')"/>
+	</ol><hr>
+	<p>Protein and structure database</p>
+	<ol>
+	<img src="./logo/Uniprot.jpg" width="120" height="45" alt="" onClick="openurl('https://www.uniprot.org/uniprot/?sort=score&query=',' ')"/>
+	<img src="./logo/PDBj.png" width="120" height="45" alt="" onClick="openurl('https://pdbj.org/mine/search?query=',' ')"/>
+	<img src="logo/DrugBank-target.png" width="120" height="45" alt="" onClick="openurl('https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=bio_entities')"/>
+	<img src="logo/Inact.png" width="120" height="45" alt="" onClick="openurl('https://www.ebi.ac.uk/intact/interactions?conversationContext=',' ')"/>
+	<img src="logo/Pfam.png" width="120" height="45" alt="" onClick="openurl('http://pfam.xfam.org/search/keyword?query=',' ')"/>
+	<img src="logo/InterPro.png" width="120" height="45" alt="" onClick="openurl('http://www.ebi.ac.uk/interpro/search/text/','/?page=1#table')"/>
+	</ol><hr>
+	<p>Protein Expression database</p>
+	<ol>
+	<img src="logo/Ensembi.png" width="120" height="45" alt="" onClick="openurl('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
+	<img src="logo/Genevisible.png" width="120" height="45" alt="" onClick="openurl('https://genevisible.com/tissues/HS/Gene%20Symbol/',' ')"/>
+	<img src="logo/Bgee.png" width="120" height="45" alt="" onClick="openurl('https://bgee.org/?page=gene&query=',' ')"/>
+	<img src="logo/GTEx.png" width="120" height="45" alt="" onClick="openurl('https://www.gtexportal.org/home/gene/',' ')"/>
+
+	</ol><hr>
+	<p>Enzyme and Biochemistry database</p>
+	<ol>		
+	<img src="logo/KEGG.png" width="120" height="45" alt="" onClick="openurl('https://www.genome.jp/dbget-bin/www_bfind_sub?mode=bfind&max_hit=500&dbkey=kegg&keywords=',' ')"/>
+	<img src="logo/KEGG-Pathway.png" width="120" height="45" alt="" onClick="openurl('https://www.kegg.jp/kegg-bin/search_pathway_text?map=map&mode=1&viewImage=true&keyword=',' ')"/>
+	<img src="logo/BRENDA.png" width="120" height="45" alt="" onClick="openurl('https://www.brenda-enzymes.org/fulltext.php?Searchterm=',' ')"/>
+	<img src="logo/HMDB.png" width="120" height="45" alt="" onClick="openurl('https://hmdb.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=metabolites&button=')"/>
+	<img src="logo/Reactome.png" width="120" height="45" alt="" onClick="openurl('https://reactome.org/content/query?q=','&species=Homo+sapiens&species=Entries+without+species&cluster=true')"/>
+	</ol><hr>
+<!--	
+	<ol>
+	</ol><hr>
+	<ol>
+	</ol><hr>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+-->	
+</b></ol>
+
+</ol></div>
+
+</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+
+
+
