@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodatabase_Search</title>
+<link href="css/bootstrap-4.0.0.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function openurl(prefix,postfix){
+	var url= prefix + document.getElementById("textinput").value + postfix
+	window.open(url)
+	}
+	</script>
+</head>
+<body>
+
+<table width="2000" border="0" cellpadding="50">
+  <tbody>
+    <tr>
+      <td>
+<div data-role="page" id="page"><ol>
+<div data-role="header">
+       <h1><b>生物学数据库搜索导航</b></h1>
+		 <p> 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</p>
+		 <p> Email: wanglin3@shanghaitech.edu.cn </p>
+	     <div class="btn-toolbar" role="toolbar">
+	       <div class="btn-group mr-2" role="group">
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./index.html')" >中文</button>
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./index-EN.html')">English</button>
+	         </div>
+	       <div class="btn-group mr-2" role="group">
+	         <button type="button" class="btn btn-primary" onClick="window.open('./ComBio-CN.html')">计算生物学</button>
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./Bioinfo-CN.html')">生物信息学</button>
+	         <button type="button" class="btn btn-success" onClick="window.open('./BioMed-CN.html')">生物医药</button>
+	         <button type="button" class="btn btn-danger" onClick="window.open('./Botany-CN.html')">植物学</button>
+	         <button type="button" class="btn btn-warning" onClick="window.open('./StruBio-CN.html')">结构生物学</button>
+	         <button type="button" class="btn btn-info" onClick="window.open('./SynBio-CN.html')">合成生物学</button>
+	         <button type="button" class="btn btn-light" onClick="window.open('./General-CN.html')">通用</button>
+	         <button type="button" class="btn btn-dark" onClick="window.open('./Other-CN.html')">其他</button>
+	         <button type="button" class="btn btn-link" onClick="window.open('./Contact-CN.html')">联系我们</button>
+	         </div>
+	       </div>
+<hr><hr>
+</div>
+ <div data-role="content">
+       <div data-role="fieldcontain">
+         <ol>
+		   <label for="textinput"><h5><b>从这里开始： </b></h5></label>
+         <input name="textinput" type="text" id="textinput" placeholder="在此输入英文关键词" size="50" maxlength="5000" height="30" hspace="3000" style="border:1.5px solid #378888"/></ol>  
+       </div>
+ </div>
+		   
+<div name="chinese-notice"><hr><ol>
+	<section><b>在上方检索框内输入要检索的英文关键词，点击下方图标即可在相应数据库中搜索</b></section><hr></ol>
+</div>
+
+<ol><b>
+	<p>学术出版物、资源与学术名词查询</p>
+	<ol>
+	<img src="./logo/Pubmed.png" width="120" height="45" alt="" onClick="openurl('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
+	<img src="logo/Wikipedia.png" width="120" height="45" alt="" onClick="openurl('https://en.wikipedia.org/wiki/',' ')"/>
+	<img src="logo/Google.png" width="120" height="45" alt="" onClick="openurl('https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=','&btnG=')"/>
+	<img src="logo/Gen-lib.png" width="120" height="45" alt="" onClick="openurl('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
+	<img src="logo/OBRC.png" width="120" height="45" alt="" onClick="openurl('http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=','&v%3Aproject=obrc&submit=Search')"/>
+	<img src="logo/Sd.png" width="120" height="45" alt="" onClick="openurl('https://www.sciencedirect.com/search?qs=',' ')"/>
+	</ol><hr>
+	<p>化合物与药物信息数据库</p>
+	<ol>
+	<img src="./logo/PubChem.png" width="120" height="45" alt="" onClick="openurl('https://pubchem.ncbi.nlm.nih.gov/',' ')"/>
+	<img src="logo/DrugBank.png" width="120" height="45" alt="" onClick="openurl('https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=drugs')"/>
+	<img src="logo/BindingDB.png" width="120" height="45" alt="" onClick="openurl('https://www.bindingdb.org/bind/tabLuceneResult.jsp?thisInput=','&submit=Go')"/>
+	<img src="logo/IUPHAR.png" width="120" height="45" alt="" onClick="openurl('https://www.guidetopharmacology.org/GRAC/DatabaseSearchForward?searchString=','&searchCategories=all&species=none&type=all&comments=includeComments&order=rank&submit=Search+Database')"/>
+	</ol><hr>
+	<p>蛋白与结构数据库</p>
+	<ol>
+	<img src="./logo/Uniprot.jpg" width="120" height="45" alt="" onClick="openurl('https://www.uniprot.org/uniprot/?sort=score&query=',' ')"/>
+	<img src="./logo/PDBj.png" width="120" height="45" alt="" onClick="openurl('https://pdbj.org/mine/search?query=',' ')"/>
+	<img src="logo/DrugBank-target.png" width="120" height="45" alt="" onClick="openurl('https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=bio_entities')"/>
+	<img src="logo/Inact.png" width="120" height="45" alt="" onClick="openurl('https://www.ebi.ac.uk/intact/interactions?conversationContext=',' ')"/>
+	<img src="logo/Pfam.png" width="120" height="45" alt="" onClick="openurl('http://pfam.xfam.org/search/keyword?query=',' ')"/>
+	<img src="logo/InterPro.png" width="120" height="45" alt="" onClick="openurl('http://www.ebi.ac.uk/interpro/search/text/','/?page=1#table')"/>
+	</ol><hr>
+	<p>蛋白表达信息数据库</p>
+	<ol>
+	<img src="logo/Ensembi.png" width="120" height="45" alt="" onClick="openurl('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
+	<img src="logo/Genevisible.png" width="120" height="45" alt="" onClick="openurl('https://genevisible.com/tissues/HS/Gene%20Symbol/',' ')"/>
+	<img src="logo/Bgee.png" width="120" height="45" alt="" onClick="openurl('https://bgee.org/?page=gene&query=',' ')"/>
+	<img src="logo/GTEx.png" width="120" height="45" alt="" onClick="openurl('https://www.gtexportal.org/home/gene/',' ')"/>
+
+	</ol><hr>
+	<p>酶与生物化学信息数据库</p>
+	<ol>		
+	<img src="logo/KEGG.png" width="120" height="45" alt="" onClick="openurl('https://www.genome.jp/dbget-bin/www_bfind_sub?mode=bfind&max_hit=500&dbkey=kegg&keywords=',' ')"/>
+	<img src="logo/KEGG-Pathway.png" width="120" height="45" alt="" onClick="openurl('https://www.kegg.jp/kegg-bin/search_pathway_text?map=map&mode=1&viewImage=true&keyword=',' ')"/>
+	<img src="logo/BRENDA.png" width="120" height="45" alt="" onClick="openurl('https://www.brenda-enzymes.org/fulltext.php?Searchterm=',' ')"/>
+	<img src="logo/HMDB.png" width="120" height="45" alt="" onClick="openurl('https://hmdb.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=metabolites&button=')"/>
+	<img src="logo/Reactome.png" width="120" height="45" alt="" onClick="openurl('https://reactome.org/content/query?q=','&species=Homo+sapiens&species=Entries+without+species&cluster=true')"/>
+	</ol><hr>
+<!--	
+	<ol>
+	</ol><hr>
+	<ol>
+	</ol><hr>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+-->	
+</b></ol>
+<ol><b><p>推荐将我设置为工作电脑的浏览器主页以节省寻找数据库的时间哦~</p></b></ol>
+<ol><b><p><h6>网页还在测试阶段，欢迎联系我们以添加更多数据库和功能</h6></p></b></ol>
+</ol></div>
+
+</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+		  
+		  
+		  

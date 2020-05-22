@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodatabase_Search</title>
+<link href="css/bootstrap-4.0.0.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	function openurl(prefix,postfix){
+	var url= prefix + document.getElementById("textinput").value + postfix
+	window.open(url)
+	}
+	</script>
+</head>
+<body>
+
+<table width="2000" border="0" cellpadding="50">
+  <tbody>
+    <tr>
+      <td>
+
+<div data-role="page" id="page"><ol>
+<div data-role="header">
+       <h1><b>生物学数据库搜索导航</b></h1>
+		 <p> 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</p>
+		 <p> Email: wanglin3@shanghaitech.edu.cn </p>
+	     <div class="btn-toolbar" role="toolbar">
+	       <div class="btn-group mr-2" role="group">
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./index.html')" >中文</button>
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./index-EN.html')">English</button>
+	         </div>
+	       <div class="btn-group mr-2" role="group">
+	         <button type="button" class="btn btn-primary" onClick="window.open('./ComBio-CN.html')">计算生物学</button>
+	         <button type="button" class="btn btn-secondary" onClick="window.open('./Bioinfo-CN.html')">生物信息学</button>
+	         <button type="button" class="btn btn-success" onClick="window.open('./BioMed-CN.html')">生物医药</button>
+	         <button type="button" class="btn btn-danger" onClick="window.open('./Botany-CN.html')">植物学</button>
+	         <button type="button" class="btn btn-warning" onClick="window.open('./StruBio-CN.html')">结构生物学</button>
+	         <button type="button" class="btn btn-info" onClick="window.open('./SynBio-CN.html')">合成生物学</button>
+	         <button type="button" class="btn btn-light" onClick="window.open('./General-CN.html')">通用</button>
+	         <button type="button" class="btn btn-dark" onClick="window.open('./Other-CN.html')">其他</button>
+	         <button type="button" class="btn btn-link" onClick="window.open('./Contact-CN.html')">联系我们</button>
+	         </div>
+	       </div>
+<hr><hr>
+</div>
+ <div data-role="content">
+       <div data-role="fieldcontain">
+         <ol>
+		   <label for="textinput"><h5>Search Text :  </h5></label>
+         <input name="textinput" type="text" id="textinput" placeholder="Text type in here" size="50" maxlength="5000" height="30" hspace="3000" style="border:1.5px solid #378888"/></ol>  
+       </div>
+ </div>
+		   
+<div name="chinese-notice"><hr><ol>
+	<section><b>在上方检索框内输入要检索的英文关键词，点击下方图标即可在相应数据库中搜索</b></section><hr></ol>
+</div>
+
+<ol><b>
+	<p>Papar and wiki</p>
+	<ol>
+	<img src="./logo/Pubmed.png" width="120" height="45" alt="" onClick="openurl('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
+	<img src="logo/Wikipedia.png" width="120" height="45" alt="" onClick="openurl('https://en.wikipedia.org/wiki/',' ')"/>
+	<img src="logo/Google.png" width="120" height="45" alt="" onClick="openurl('https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=','&btnG=')"/>
+	<img src="logo/Gen-lib.png" width="120" height="45" alt="" onClick="openurl('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
+	<img src="logo/OBRC.png" width="120" height="45" alt="" onClick="openurl('http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=','&v%3Aproject=obrc&submit=Search')"/>
+	<img src="logo/Sd.png" width="120" height="45" alt="" onClick="openurl('https://www.sciencedirect.com/search?qs=',' ')"/>
+	</ol><hr>
+
+</b></ol><p> 按照方向不同提供不同领域的搜索主页(但很多还是空壳)，点击上方导航进入~</p>
+<ol><b><p>推荐将我设置为工作电脑的浏览器主页以节省寻找数据库的时间哦~</p></b></ol>
+<ol><b><p><h6>网页还在测试阶段，欢迎联系我们以添加更多数据库和功能</h6></p></b></ol>
+	<hr><hr>
+	<ol><ol><b>
+		<p> 如果您有意帮助我们完善本网站，请填写如下表单(点击或扫码访问均可)，万分感谢您的建议！</p>
+		<img src="./Form.png" width="320" height="320" alt="" onClick="openurl('https://forms.office.com/Pages/ResponsePage.aspx?id=2WLNjzVAWUKKVc00_QV0QxaEu2jBsuFCnn2yNMZpnMFUNTBGVVhQRU5HTzVRWFJLOFFCNllTWTYwVS4u',' ')"/>
+	</b></ol></ol>
+<!--	
+	<ol>
+	</ol><hr>
+	<ol>
+	</ol><hr>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+	<img src="logo" width="120" height="45" alt="" onClick="openurl('',' ')"/>
+-->	
+
+</ol></div>
+
+</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+
+
+
