@@ -1,2 +1,4 @@
-# Bio-database
-A homepage of Bio-database and simple search by short text.
+# Bio-db-Search
+# 生物数据库搜索导航
+
+一个通过url操作实现“一个搜索框搜多个数据库”的网页。
