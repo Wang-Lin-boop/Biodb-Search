@@ -36,13 +36,12 @@
 </script> <!--核心功能模块-->
 <script type="text/javascript">
 	function CF(){
-		document.body.style.backgroundColor="#ADD8E6"
-		document.getElementById('contact-tab').style.backgroundColor="#AFEEEE"
-		document.getElementById('header').style.backgroundImage="url(./fig/fig3.png)"
+		document.body.style.backgroundColor="#00FF7F"
+		document.getElementById('header').style.backgroundImage="url(./fig/fig2.png)"
 	}
 	function NC(){
 		document.body.style.backgroundColor="#FFFFFF"
-		document.getElementById('contact-tab').style.backgroundColor="#FFFFFF"
+		document.getElementById('header').style.backgroundImage="url(./fig/fig3.png)"
 	}
 </script> <!--风格切换-->
 <script type="text/javascript">
@@ -61,10 +60,11 @@
 		<hr><h2><b>生物医学搜索及工具导航</b></h2><hr>
 		<div class="btn-toolbar" role="label">
 			<div class="btn-group mr-2" role="group">
-	        	<button type="button" class="btn btn-secondary" onClick="CF()">护眼风格</button>
+	        	<button type="button" class="btn btn-secondary" onClick="CF()">辣眼风格</button>
 				<button type="button" class="btn btn-secondary" onClick="NC()">简约风格</button>
 				<button type="button" class="btn btn-secondary" onClick="window.location.href ='./index.html'">2.0</button>
 	        	<button type="button" class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
+				<button type="button" class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">加入社区</button>
 				<button type="button" class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
 			</div>
 			<div class="btn-group mr-2" role="group">
@@ -181,21 +181,21 @@
 </ol>
 </b></div>
 </table><hr>
-	<div id="contact-tab" style="width:1610px;float:left;">
-		<div style="width:300px;height:auto;float:left;">
-			<p><b>一个小小的调查问卷和小小的讨论群~</b></p>
-			<ol>
-			<img src="fig/Form.png" width="120" height="120" alt="" onClick="openurl('https://forms.office.com/Pages/ResponsePage.aspx?id=2WLNjzVAWUKKVc00_QV0QxaEu2jBsuFCnn2yNMZpnMFUNTBGVVhQRU5HTzVRWFJLOFFCNllTWTYwVS4u')" title="点一下就可以填写了，其实主要是让我知道还有人在用哈哈"/>
-			<img src="fig/Bio.png" width="120" height="120" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/>
-			</ol>
-		</div><!--问卷和QQ群-->
-		<div style="width:600px;height:auto;float:left;display:inline"><b><ol>
-			<div  name="contact" id="contact">
-				<div><a> 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</a></div>
-				<a href="mailto:wanglin3@shanghaitech.edu.cn"> Email: wanglin3@shanghaitech.edu.cn </a>
-			</div></ol></b>
-		</div><!--邮箱-->
-	</div><!--网页尾部联系方式信息-->
+<div id="contact-tab" style="width:auto;float:left;" class="hide">
+	<div style="width:auto;height:auto;float:left;margin-right:50px;">
+		<p><b>一个小小的调查问卷和小小的讨论群~</b></p>
+		<ol>
+		<img src="fig/Form.png" width="120" height="120" alt="" onClick="openurl('https://forms.office.com/Pages/ResponsePage.aspx?id=2WLNjzVAWUKKVc00_QV0QxaEu2jBsuFCnn2yNMZpnMFUNTBGVVhQRU5HTzVRWFJLOFFCNllTWTYwVS4u')" title="点一下就可以填写了，其实主要是让我知道还有人在用哈哈"/>
+		<img src="fig/Bio.png" width="120" height="120" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/>
+		</ol>
+	</div><!--问卷和QQ群-->
+	<div style="width:auto;height:auto;float:left;display:inline;"><b><ol>
+		<div  name="contact" id="contact">
+			<div><a> 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</a></div>
+			<a href="mailto:wanglin3@shanghaitech.edu.cn"> Email: wanglin3@shanghaitech.edu.cn </a>
+		</div></ol></b>
+	</div><!--邮箱-->
+</div><!--网页尾部联系方式信息-->
 </body>
 </html>
 

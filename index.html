@@ -10,6 +10,7 @@
 	.search { width: 60%; margin: 12px auto; display: flex;}
     .search input{float:inherit;flex: 2;height: 50px; outline: none; border: 1px solid red;box-sizing: border-box; padding-left: 5px;｝
 </style> <!--全局风格-->
+
 <style type="text/css">
 	.show{display:contents;}
 	.hide{display:none;}
@@ -37,12 +38,11 @@
 <script type="text/javascript">
 	function CF(){
 		document.body.style.backgroundColor="#ADD8E6"
-		document.getElementById('contact-tab').style.backgroundColor="#AFEEEE"
-		document.getElementById('header').style.backgroundImage="url(./fig/fig3.png)"
+		document.getElementById('header').style.backgroundImage="url(./fig/fig2.png)"
 	}
 	function NC(){
 		document.body.style.backgroundColor="#FFFFFF"
-		document.getElementById('contact-tab').style.backgroundColor="#FFFFFF"
+		document.getElementById('header').style.backgroundImage="url(./fig/fig3.png)"
 	}
 </script> <!--风格切换-->
 <script type="text/javascript">
@@ -56,15 +56,16 @@
 		}
 </script> <!--选项卡切换Script模块-->
 </head>
-<body style="margin-left:60px;width:1620px;">
+<body style="margin-left:60px;width:1620px;" >
 	<div data-role="header" id="header" style="width:1610px; height:auto;background-image:url(./fig/fig1.png); width:1660px;height:160px;border:0px;">
 		<hr><h2><b>生物医学搜索及工具导航</b></h2><hr>
 		<div class="btn-toolbar" role="label">
 			<div class="btn-group mr-2" role="group" style="height:40px;">
-	         	<button type="button" class="btn btn-secondary" onClick="CF()">护眼风格</button>
+	         	<button type="button" class="btn btn-secondary" onClick="CF()">辣眼风格</button>
 			 	<button type="button" class="btn btn-secondary" onClick="NC()">简约风格</button>
 				<button type="button" class="btn btn-secondary" onClick="window.location.href ='./ComBio-CN.html'">1.0</button>
-	         	<button type="button" class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
+				<button type="button" class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
+				<button type="button" class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">加入社区</button>
 			 	<button type="button" class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
 			</div> <!--调整基础背景风格的基础选项卡-->
 			<div id="cardtab">
@@ -223,13 +224,15 @@
 			<button type="button" title="PDBID之间用空格分隔，输入上方搜索框中，点此批量下载" onClick="pdbdownload()"><b>批量下载PDB</b></button>
 			<button type="button" title="将要查询的命令输入搜索框，点此查询" onClick="search('https://man.linuxde.net/','')"><b>Linux命令查询</b></button>
 	</div> <!--小工具-->
-	<div id="contact-tab" style="width:1610px;float:left;margin-top:20px;">
-		<div style="width:300px;height:auto;float:left;">
+	<div id="contact-tab" style="width:auto;float:left;" class="hide">
+		<div style="width:auto;height:auto;float:left;margin-right:50px;">
 			<p><b>一个小小的调查问卷和小小的讨论群~</b></p>
+			<ol>
 			<img src="fig/Form.png" width="120" height="120" alt="" onClick="openurl('https://forms.office.com/Pages/ResponsePage.aspx?id=2WLNjzVAWUKKVc00_QV0QxaEu2jBsuFCnn2yNMZpnMFUNTBGVVhQRU5HTzVRWFJLOFFCNllTWTYwVS4u')" title="点一下就可以填写了，其实主要是让我知道还有人在用哈哈"/>
 			<img src="fig/Bio.png" width="120" height="120" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/>
+			</ol>
 		</div><!--问卷和QQ群-->
-		<div style="width:600px;height:auto;float:left;display:inline"><b><ol>
+		<div style="width:auto;height:auto;float:left;display:inline;"><b><ol>
 			<div  name="contact" id="contact">
 				<div><a> 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</a></div>
 				<a href="mailto:wanglin3@shanghaitech.edu.cn"> Email: wanglin3@shanghaitech.edu.cn </a>
