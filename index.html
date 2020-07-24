@@ -69,13 +69,13 @@
 			 	<button type="button" class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
 			</div> <!--调整基础背景风格的基础选项卡-->
 			<div id="cardtab">
-        		<button onClick="loadcard(protein);loadcard(basebioinfo)">蛋白矿工</button>
+        		<button onClick="loadcard(protein);loadcard(basetool)">蛋白矿工</button>
 				<button onClick="loadcard(drug);loadcard(drugtool)">药物设计</button>
 				<button onClick="loadcard(metabolic);loadcard(mettool)">酶与代谢</button>
-				<button onClick="loadcard(bioinfo)">生物信息</button>
+				<button onClick="loadcard(bioinfo);loadcard(basebioinfo)">生物信息</button>
 				<button onClick="loadcard(biostru);loadcard(moldis)">生物结构</button>
         		<button onClick="loadcard(model)">计算建模</button>
-				<button onClick="loadcard(dock)">分子对接</button>
+				<button onClick="loadcard(dock)">蛋白对接</button>
 				<button onClick="loadcard(other)">其他</button>
 				<button onClick="loadcard(tool)">小工具</button>
 			</div>
@@ -116,11 +116,11 @@
 				<img src="logo/InterPro.png" width="120" height="45" alt="" title="最新蛋白质家族与Domain信息数据库" onClick="search('http://www.ebi.ac.uk/interpro/search/text/','/?page=1#table')"/>
 				<hr>
 			</div>
-			<div id="expression" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
-				<p><b>基因表达数据库</b></p>
-				<img src="logo/Genevisible.png" width="120" height="45" title="图示化的纵览蛋白表达分布" alt="" onClick="search('https://genevisible.com/tissues/HS/Gene%20Symbol/',' ')"/>
-				<img src="logo/Bgee.png" width="120" height="45" alt="" title="数据化的各器官蛋白表达分布" onClick="search('https://bgee.org/?page=gene&query=',' ')"/>
-				<img src="logo/GTEx.png" width="120" height="45" alt="" title="综合型基因表达数据库，可链接到多个基因组数据库" onClick="search('https://www.gtexportal.org/home/gene/',' ')"/>
+			<div id="bioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
+				<p><b>生物信息学数据库</b></p>
+				<img src="logo/1000G.png" width="120" height="45" alt="" title="广泛的人类遗传变异数据" onClick="search('https://www.internationalgenome.org/data-portal/search?q=',' ')"/>
+				<img src="logo/Clinvar.png" width="120" height="45" alt="" title="临床基因变异数据库" onClick="search('https://www.ncbi.nlm.nih.gov/clinvar/?term=','%5Bgene%5D')"/>
+				<img src="logo/Ensembi.png" width="120" height="45" alt="" title="动物基因组数据库" onClick="search('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
 				<hr>
 			</div>
 			<div id="drug" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
@@ -144,24 +144,29 @@
 				<img src="logo/PDB-download.png" width="120" height="45" title="PDB批量下载" alt="" onClick="openurl('http://www.rcsb.org/downloads')"/>
 				<hr>
 			</div>
-			<div id="bioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
-				<p><b>生物信息学数据库</b></p>
-				<img src="logo/1000G.png" width="120" height="45" alt="" title="广泛的人类遗传变异数据" onClick="search('https://www.internationalgenome.org/data-portal/search?q=',' ')"/>
-				<img src="logo/Clinvar.png" width="120" height="45" alt="" title="临床基因变异数据库" onClick="search('https://www.ncbi.nlm.nih.gov/clinvar/?term=','%5Bgene%5D')"/>
-				<img src="logo/Ensembi.png" width="120" height="45" alt="" title="动物基因组数据库" onClick="search('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
+			<div id="expression" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
+				<p><b>基因表达数据库</b></p>
+				<img src="logo/Genevisible.png" width="120" height="45" title="图示化的纵览蛋白表达分布" alt="" onClick="search('https://genevisible.com/tissues/HS/Gene%20Symbol/',' ')"/>
+				<img src="logo/Bgee.png" width="120" height="45" alt="" title="数据化的各器官蛋白表达分布" onClick="search('https://bgee.org/?page=gene&query=',' ')"/>
+				<img src="logo/GTEx.png" width="120" height="45" alt="" title="综合型基因表达数据库，可链接到多个基因组数据库" onClick="search('https://www.gtexportal.org/home/gene/',' ')"/>
 				<hr>
 			</div>
 		</div><!--数据库区域-->
 		<div style="width:auto; height:auto; float:left; margin-right:40px; display:inline">
-			<div id="basebioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
-				<p><b>序列比对及处理</b></p>
+			<div id="basetool" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
+				<p><b>基本蛋白分析工具</b></p>
 				<img src="logo/BLAST.png" width="120" height="45" alt="" title="最常用的序列比对软件" onClick="openurl('https://blast.ncbi.nlm.nih.gov/Blast.cgi')"/>
 				<img src="logo/Map.png" width="120" height="45" alt="" title="Uniprot中的不同数据库间条目Map工具" onClick="openurl('https://www.uniprot.org/uploadlists/')"/>
+				<img src="logo/Entrez.png" width="120" height="45" alt="" title="NCBI中的数据批量下载" onClick="openurl('https://www.ncbi.nlm.nih.gov/sites/batchentrez')"/>
+				<img src="logo/ProtParam.png" width="120" height="45" alt="" title="蛋白质基本性质预测" onClick="openurl('https://web.expasy.org/protparam/')"/>
+				<hr>
+			</div>
+			<div id="basebioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
+				<p><b>序列比对及处理</b></p>
 				<img src="logo/HHpred.png" width="120" height="45" alt="" title="可用于查找PDB中适合的建模模板" onClick="openurl('https://toolkit.tuebingen.mpg.de/tools/hhpred')"/>
 				<img src="logo/MAFFT.png" width="120" height="45" alt="" title="最好用的多序列比对软件之一" onClick="openurl('https://www.ebi.ac.uk/Tools/msa/mafft/')"/>
 				<img src="logo/Weblogo.png" width="120" height="45" alt="" title="序列保守性可视化" onClick="openurl('http://weblogo.threeplusone.com/create.cgi')"/>
 				<img src="logo/Motif.png" width="120" height="45" alt="" title="搜索序列Motif" onClick="openurl('https://www.genome.jp/tools/motif/')"/>
-				<img src="logo/Entrez.png" width="120" height="45" alt="" title="NCBI中的数据批量下载" onClick="openurl('https://www.ncbi.nlm.nih.gov/sites/batchentrez')"/>
 				<img src="logo/CDHIT.png" width="120" height="45" alt="" title="生物序列聚类分析" onClick="openurl('http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi')"/>
 				<hr>
 			</div>
