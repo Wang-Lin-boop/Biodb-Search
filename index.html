@@ -47,6 +47,10 @@
 		var pcolor=document.getElementsByClassName('wtext'); for(var i=0;i<pcolor.length;i++){pcolor[i].className='text'}
 		document.getElementById('header').style.backgroundImage="url(./fig/fig3.png)"
 	}
+	function jump(postion){
+		var pp = "#"+postion
+		window.location.hash=pp
+	}
 	function SetHomepage(url){
         if (document.all) {
             document.body.style.behavior='url(#default#homepage)';
@@ -55,10 +59,6 @@
             alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
 		}
     }
-	function jump(postion){
-		var pp = "#"+postion
-		window.location.hash=pp
-	}
 </script> <!--风格切换及设为主页-->
 <script type="text/javascript">
 	function loadcard(id1){
@@ -67,28 +67,29 @@
 		}
 		else{
 			id1.className="show"
-		}
-		}
+		}}
 </script> <!--选项卡切换Script模块-->
 </head>
 <body style="margin-left:60px;width:1620px;" >
-	<div data-role="header" id="header" style="width:1610px; height:auto;background-image:url(./fig/fig1.png); width:1660px;height:160px;border:0px;">
+	<div data-role="header" id="header" style="width:1610px; height:auto;background-image:url(./fig/fig3.png); width:1660px;height:140px;border:0px;">
 		<hr><h2 class="text"><b>生物医学搜索及工具导航</b></h2><hr>
 		<div class="btn-toolbar" role="label">
-			<div class="btn-group mr-2" role="group" style="height:40px;">
-	         	<button type="button" class="btn btn-secondary" onClick="CF();CF();CF();">夜间</button>
-			 	<button type="button" class="btn btn-secondary" onClick="NC();NC();NC();">简约</button>
-				<button type="button" class="btn btn-secondary" onClick="window.location.href ='./ComBio-CN.html'">1.0</button>
-				<button type="button" class="btn btn-light" οnclick="SetHomepage(window.location.href)">设为主页</button>
-				<button type="button" class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
-				<button type="button" class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">加入社区</button>
-			 	<button type="button" class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
+			<div class="btn-group mr-2" role="group" style="height:40px;float:left;">
+	         	<button class="btn btn-secondary" onClick="CF();CF();CF();">夜间</button>
+			 	<button class="btn btn-secondary" onClick="NC();NC();NC();">简约</button>
+				<button class="btn btn-secondary" onClick="window.location.href ='./ComBio-CN.html'">1.0</button>
+				<button class="btn btn-secondary" onClick="SetHomepage(window.location.href)"><b>设为主页</b></button>
+				<button class="btn btn-light" style="color:red" onClick="loadcard(contact)"><b>Join Us</b></button>
+				<button class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
+				<button class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">社区</button>
+			 	<button class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
 			</div> <!--调整基础背景风格的基础选项卡-->
-			<div id="cardtab">
+			<div id="cardtab" style="height:40px;float:left;">
         		<button onClick="loadcard(protein);loadcard(basetool)">蛋白矿工</button>
 				<button onClick="loadcard(drug);loadcard(drugtool)">药物设计</button>
 				<button onClick="loadcard(metabolic);loadcard(mettool)">酶与代谢</button>
-				<button onClick="loadcard(bioinfo);loadcard(basebioinfo);loadcard(expression);loadcard(expressiontool);">生物信息</button>
+				<button onClick="loadcard(bioinfo);loadcard(basebioinfo);">生物信息</button>
+				<button onClick="loadcard(expression);loadcard(expressiontool);">基因表达</button>
 				<button onClick="loadcard(biostru);loadcard(moldis);">生物结构</button>
 				<button onClick="loadcard(dockpro);loadcard(dockpep);">分子对接</button>
 				<button onClick="loadcard(model);loadcard(abinito);loadcard(homo);">分子建模</button>
@@ -275,21 +276,10 @@
 			</div>
 		</div><!--其他工具区域-->
 	</div> <!--选项卡内容页面-->
-	<div class="text" style="width:auto;float:left;">
-		<div class="hide" id="contact-tab" style="width:auto;height:auto;float:left;margin-right:50px;">
-			<p><b>一个小小的调查问卷和小小的讨论群~</b></p>
-			<ol>
-			<img src="fig/Form.png" width="120" height="120" alt="" onClick="openurl('https://forms.office.com/Pages/ResponsePage.aspx?id=2WLNjzVAWUKKVc00_QV0QxaEu2jBsuFCnn2yNMZpnMFUNTBGVVhQRU5HTzVRWFJLOFFCNllTWTYwVS4u')" title="点一下就可以填写了，其实主要是让我知道还有人在用哈哈"/>
-			<img src="fig/Bio.png" width="120" height="120" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/>
-			</ol>
-		</div><!--问卷和QQ群-->
-		<div class="text" style="width:auto;height:auto;float:left;display:inline;"><b><ol>
-			<div class="hide" name="contact" id="contact-email">
-				<div><a > 感谢您的使用，如果您有任何关于本站的问题，欢迎随时联系我。</a></div>
-				<a href="mailto:wanglin3@shanghaitech.edu.cn"> Email: wanglin3@shanghaitech.edu.cn </a>
-			</div></ol></b>
-		</div><!--邮箱-->
-	</div><!--网页尾部联系方式信息-->
+	<div class="hide" id="contact" align="center" style="width:auto; height:auto; float:left;">
+		<div><h3 class="text"><b>我们的讨论群，欢迎加群交流和吐槽！</b></h3>
+		<img src="fig/Bio.png" width="600" height="350" style="border:none;" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/></div>
+	</div><!--网页尾部关于我们信息-->
 </body>
 </html>
 
