@@ -16,6 +16,7 @@
 	.hide{display:none;}
 	.wtext *{font-family:verdana; color: whitesmoke;}
 	.text *{font-family:verdana; color:black;}
+	button {font-weight: 400;text-align: center; white-space: nowrap; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; color: #fff;background-color:#E0FFFF; border-color: #007bff}
 	#card-ab{width:650px;height:auto;float:left;}
     #cardtab button{display: inline-block;font-weight: 400;text-align: center; white-space: nowrap; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; color: #fff;background-color: #007bff; border-color: #007bff}
 	</style> <!--选项卡切换风格模块-->
@@ -78,7 +79,7 @@
 	         	<button type="button" class="btn btn-secondary" onClick="CF();CF();CF();">夜间</button>
 			 	<button type="button" class="btn btn-secondary" onClick="NC();NC();NC();">简约</button>
 				<button type="button" class="btn btn-secondary" onClick="window.location.href ='./ComBio-CN.html'">1.0</button>
-				<button type="button" class="btn" οnclick="SetHomepage(window.location.href)">设为主页</button>
+				<button type="button" class="btn btn-light" οnclick="SetHomepage(window.location.href)">设为主页</button>
 				<button type="button" class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
 				<button type="button" class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">加入社区</button>
 			 	<button type="button" class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
@@ -89,7 +90,8 @@
 				<button onClick="loadcard(metabolic);loadcard(mettool)">酶与代谢</button>
 				<button onClick="loadcard(bioinfo);loadcard(basebioinfo);loadcard(expression);loadcard(expressiontool);">生物信息</button>
 				<button onClick="loadcard(biostru);loadcard(moldis);">生物结构</button>
-        		<button onClick="loadcard(biocom)">计算生物学</button>
+				<button onClick="loadcard(dockpro);loadcard(dockpep);">分子对接</button>
+				<button onClick="loadcard(model);loadcard(abinito);loadcard(homo);">分子建模</button>
 				<button onClick="loadcard(other)">其他</button>
 				<button onClick="loadcard(tool)">小工具</button>
 			</div>
@@ -98,12 +100,13 @@
 	<div class="search" style="width:1610px;margin-bottom:30px;height:auto;">
 		<input name="textinput" type="text" id="textinput" placeholder="在此输入英文关键词，点击下方图标搜索" size="70" maxlength="9000" height="30" hspace="4000" style="border:2px solid #378888"/>
 	</div><!--搜索关键词输入框-->
-	<div id="base" class="text" style="width:1610px; height:auto;float:left;margin-bottom:20px;">
+	<div id="base" class="text" style="width:1610px; height:auto;float:left;margin-bottom:0px;">
 		<div id="paper-db" style="width:auto; height:auto; float:left; margin-right:40px; display:inline">	
 			<p><b>学术出版物、资源与学术名词查询</b></p>
 			<img src="./logo/Pubmed.png" width="120" height="45" alt="" title="NCBI文献数据库" onClick="search('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
 			<img src="logo/Wikipedia.png" width="120" height="45" alt="" title="维基百科，可以查阅名词" onClick="search('https://en.wikipedia.org/wiki/',' ')"/>
 			<img src="logo/Google.png" width="120" height="45" alt="" title="谷歌学术" onClick="search('https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=','&btnG=')"/>
+			<hr>
 		</div>
 		<div id="base-db" style="width:auto; height:auto;margin-right:40px;float:left; display:inline">
 			<p><b>基本生物元件与通路查询</b></p>
@@ -113,6 +116,7 @@
 			<img src="logo/Reactome.png" width="120" height="45" alt="" title="代谢与信号通路数据库" onClick="search('https://reactome.org/content/query?q=','&species=Homo+sapiens&species=Entries+without+species&cluster=true')"/>
 			<img src="logo/NCBI-nt.png" width="120" height="45" alt="" title="NCBI核苷酸数据库，可查询相关转录单位信息及调控元件信息" onClick="search('https://www.ncbi.nlm.nih.gov/nuccore/?term=',' ')"/>
 			<img src="./logo/PubChem.png" width="120" height="45" alt="" title="NCBI化合物数据库" onClick="search('https://pubchem.ncbi.nlm.nih.gov/',' ')"/>
+			<hr>
 		</div>
 		<div id="rare" style="width:auto; height:auto; float:left; display:inline;margin-right:40px">
 			<p><b>常用罕见字母</b></p>
@@ -130,13 +134,6 @@
 				<img src="logo/InterPro.png" width="120" height="45" alt="" title="最新蛋白质家族与Domain信息数据库" onClick="search('http://www.ebi.ac.uk/interpro/search/text/','/?page=1#table')"/>
 				<hr>
 			</div>
-			<div id="bioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
-				<p><b>生物信息学数据库</b></p>
-				<img src="logo/1000G.png" width="120" height="45" alt="" title="广泛的人类遗传变异数据" onClick="search('https://www.internationalgenome.org/data-portal/search?q=',' ')"/>
-				<img src="logo/Clinvar.png" width="120" height="45" alt="" title="临床基因变异数据库" onClick="search('https://www.ncbi.nlm.nih.gov/clinvar/?term=','%5Bgene%5D')"/>
-				<img src="logo/Ensembi.png" width="120" height="45" alt="" title="动物基因组数据库" onClick="search('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
-				<hr>
-			</div>
 			<div id="drug" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>药物设计数据库</b></p>
 				<img src="logo/DrugBank.png" width="120" height="45" alt="" title="药物信息数据库" onClick="search('https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=','&searcher=drugs')"/>
@@ -151,11 +148,11 @@
 				<img src="logo/CAZY.png" width="120" height="45" alt="" title="描述了具有碳水化合物催化活性的酶家族" onClick="search('http://www.cazy.org/search?page=recherche&recherche=','&tag=3')"/>
 				<hr>
 			</div>
-			<div id="biostru" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
-				<p><b>生物结构数据库</b></p>
-				<img src="logo/OPM.png" width="120" height="45" alt="" title="膜蛋白结构数据库" onClick="search('https://opm.phar.umich.edu/proteins?search=',' ')"/>
-				<img src="./logo/PDBj.png" width="120" height="45" alt="" title="日本蛋白质结构数据库，有中文版" onClick="openurl('https://pdbj.org/mine/search?query=',' ')"/>
-				<img src="logo/PDB-download.png" width="120" height="45" title="PDB批量下载" alt="" onClick="openurl('http://www.rcsb.org/downloads')"/>
+			<div id="bioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
+				<p><b>生物信息学数据库</b></p>
+				<img src="logo/1000G.png" width="120" height="45" alt="" title="广泛的人类遗传变异数据" onClick="search('https://www.internationalgenome.org/data-portal/search?q=',' ')"/>
+				<img src="logo/Clinvar.png" width="120" height="45" alt="" title="临床基因变异数据库" onClick="search('https://www.ncbi.nlm.nih.gov/clinvar/?term=','%5Bgene%5D')"/>
+				<img src="logo/Ensembi.png" width="120" height="45" alt="" title="动物基因组数据库" onClick="search('http://asia.ensembl.org/Multi/Search/Results?q=',';site=ensembl_all')"/>
 				<hr>
 			</div>
 			<div id="expression" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
@@ -165,25 +162,35 @@
 				<img src="logo/GTEx.png" width="120" height="45" alt="" title="综合型基因表达数据库，可链接到多个基因组数据库" onClick="search('https://www.gtexportal.org/home/gene/',' ')"/>
 				<hr>
 			</div>
+			<div id="biostru" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
+				<p><b>生物结构数据库</b></p>
+				<img src="logo/OPM.png" width="120" height="45" alt="" title="膜蛋白结构数据库" onClick="search('https://opm.phar.umich.edu/proteins?search=',' ')"/>
+				<img src="./logo/PDBj.png" width="120" height="45" alt="" title="日本蛋白质结构数据库，有中文版" onClick="openurl('https://pdbj.org/mine/search?query=',' ')"/>
+				<img src="logo/PDB-download.png" width="120" height="45" title="PDB批量下载" alt="" onClick="openurl('http://www.rcsb.org/downloads')"/>
+				<hr>
+			</div>
+			<div id="other" class="hide" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;">
+				<div class="text" style="width:auto; height:auto;float:left;">
+					<p><b>不常用电子资源</b></p>
+					<img src="logo/Gen-lib.png" width="120" height="45" alt="" title="专业专著电子书网站" onClick="search('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
+					<img src="logo/OBRC.png" width="120" height="45" alt="" title="生物信息学资源整理，数据库的数据库" onClick="search('http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=','&v%3Aproject=obrc&submit=Search')"/>
+					<img src="logo/BioRxiv.png" width="120" height="45" alt="" title="生物医学预印本网站" onClick="search('https://www.biorxiv.org/search/','')"/>
+					<hr>
+				</div>
+			</div> <!--其他-->
 		</div><!--数据库区域-->
 		<div style="width:auto; height:auto; float:left; margin-right:40px; display:inline">
 			<div id="basetool" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>基本蛋白分析工具</b></p>
 				<img src="logo/BLAST.png" width="120" height="45" alt="" title="最常用的序列比对软件" onClick="openurl('https://blast.ncbi.nlm.nih.gov/Blast.cgi')"/>
+				<img src="logo/HHpred.png" width="120" height="45" alt="" title="可用于查找PDB中适合的建模模板" onClick="openurl('https://toolkit.tuebingen.mpg.de/tools/hhpred')"/>
 				<img src="logo/Map.png" width="120" height="45" alt="" title="Uniprot中的不同数据库间条目Map工具" onClick="openurl('https://www.uniprot.org/uploadlists/')"/>
 				<img src="logo/Entrez.png" width="120" height="45" alt="" title="NCBI中的数据批量下载" onClick="openurl('https://www.ncbi.nlm.nih.gov/sites/batchentrez')"/>
 				<img src="logo/ProtParam.png" width="120" height="45" alt="" title="蛋白质基本性质预测" onClick="openurl('https://web.expasy.org/protparam/')"/>
+				<img src="logo/SignIP.png" width="120" height="45" alt="" title="信号肽及亚细胞定位预测" onClick="openurl('http://www.cbs.dtu.dk/services/SignalP/')"/>
 				<hr>
 			</div>
-			<div id="basebioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
-				<p><b>序列比对及处理</b></p>
-				<img src="logo/HHpred.png" width="120" height="45" alt="" title="可用于查找PDB中适合的建模模板" onClick="openurl('https://toolkit.tuebingen.mpg.de/tools/hhpred')"/>
-				<img src="logo/MAFFT.png" width="120" height="45" alt="" title="最好用的多序列比对软件之一" onClick="openurl('https://www.ebi.ac.uk/Tools/msa/mafft/')"/>
-				<img src="logo/Weblogo.png" width="120" height="45" alt="" title="序列保守性可视化" onClick="openurl('http://weblogo.threeplusone.com/create.cgi')"/>
-				<img src="logo/Motif.png" width="120" height="45" alt="" title="搜索序列Motif" onClick="openurl('https://www.genome.jp/tools/motif/')"/>
-				<img src="logo/CDHIT.png" width="120" height="45" alt="" title="生物序列聚类分析" onClick="openurl('http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi')"/>
-				<hr>
-			</div>
+
 			<div id="drugtool" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>药物研发在线工具</b></p>
 				<img src="logo/iDrug.png" width="120" height="45" alt="" title="小分子ADMET性质预测及其他" onClick="openurl('https://drug.ai.tencent.com/cn')"/>
@@ -203,6 +210,21 @@
 				<img src="logo/JGI.png" width="120" height="45" alt="" title="上下游基因查找" onClick="openurl('https://img.jgi.doe.gov/cgi-bin/pub/main.cgi?section=FindGenes&page=findGenes')"/>
 				<hr>
 			</div>
+			<div id="basebioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide" >
+				<p><b>序列比对及处理</b></p>
+				<img src="logo/MAFFT.png" width="120" height="45" alt="" title="最好用的多序列比对软件之一" onClick="openurl('https://www.ebi.ac.uk/Tools/msa/mafft/')"/>
+				<img src="logo/Weblogo.png" width="120" height="45" alt="" title="序列保守性可视化" onClick="openurl('http://weblogo.threeplusone.com/create.cgi')"/>
+				<img src="logo/Motif.png" width="120" height="45" alt="" title="搜索序列Motif" onClick="openurl('https://www.genome.jp/tools/motif/')"/>
+				<img src="logo/CDHIT.png" width="120" height="45" alt="" title="生物序列聚类分析" onClick="openurl('http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi')"/>
+				<hr>
+			</div>
+			<div id="expressiontool" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p><b>互作与表达分析工具</b></p>
+				<img src="logo/String.png" width="120" height="45" alt="" title="蛋白质互作分析数据库" onClick="openurl('https://string-db.org/cgi/network.pl')"/>
+				<img src="logo/GEPIA.png" width="120" height="45" alt="" title="癌症基因表达分析工具" onClick="openurl('http://gepia.cancer-pku.cn/')"/>
+				<img src="logo/ISO.png" width="120" height="45" alt="" title="差异基因表达分析工具" onClick="openurl('http://wiki.tgilab.org/ISOexpresso/')"/>
+				<hr>
+			</div>
 			<div id="moldis" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide">
 				<p><b>结构解析与可视化软件指令集</b></p>
 				<img src="logo/Color.png" width="120" height="45" alt="" title="Chimera颜色板" onClick="openurl('https://www.cgl.ucsf.edu/chimerax/docs/user/commands/colornames.html')"/>
@@ -211,50 +233,47 @@
 				<img src="logo/CCP4.png" width="120" height="45" alt="" title="CCP4 结构生物学常用解析软件" onClick="openurl('http://www.ccp4.ac.uk/docs.php')"/>
 				<hr>
 			</div>
-			<div id="expressiontool" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
-				<p><b>基因表达分析工具</b></p>
-				<img src="logo/SignIP.png" width="120" height="45" alt="" title="信号肽及亚细胞定位预测" onClick="openurl('http://www.cbs.dtu.dk/services/SignalP/')"/>
-				<img src="logo/GEPIA.png" width="120" height="45" alt="" title="癌症基因表达分析工具" onClick="openurl('http://gepia.cancer-pku.cn/')"/>
-				<img src="logo/ISO.png" width="120" height="45" alt="" title="差异基因表达分析工具" onClick="openurl('http://wiki.tgilab.org/ISOexpresso/')"/>
+			<div id="tool" class="hide" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;">
+				<p><b>小工具，欢迎提需求！</b></p>
+				<button type="button" title="PDBID之间用空格分隔，输入上方搜索框中，点此批量下载" onClick="pdbdownload()"><b>批量下载PDB</b></button>
+				<button type="button" title="将要查询的命令输入搜索框，点此查询" onClick="search('https://man.linuxde.net/','')"><b>Linux命令查询</b></button>
+			</div> <!--小工具-->
+		</div><!--基本在线工具区域-->
+		<div style="width:auto; height:auto; float:left;display:inline">
+			<div id="dockpro" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p class="text"><b>蛋白蛋白对接工具</b></p>
+					<img src="logo/ZDock.png" width="120" height="45" alt="" title="蛋白蛋白刚性对接" onClick="openurl('http://zdock.umassmed.edu/')"/>
+					<img src="logo/HADDock.png" width="120" height="45" alt="" title="给定结合位点信息的蛋白对接" onClick="openurl('https://milou.science.uu.nl/services/HADDOCK2.2/')"/>
+					<img src="logo/HADDock2.4.png" width="120" height="45" alt="" title="新版本HADDock亲测好用" onClick="openurl('https://bianca.science.uu.nl/haddock2.4/submit/1')"/>
+					<hr>
 			</div>
-		</div><!--基本生信工具区域-->
-	</div> <!--选项卡内容页面-->
-	<div id="biocom" class="hide" style="width:1610px;height:auto;float:left">
-		<div id="model" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;display: inline">
-				<p class="text"><b>蛋白质建模工具</b></p>
-				<img src="logo/Swiss.png" width="120" height="45" alt="" title="最简单同源建模工具" onClick="openurl('https://swissmodel.expasy.org/interactive/')"/>
-				<img src="logo/I-TASSER.png" width="120" height="45" alt="" title="强大的组合同源建模及缺失片段补全工具" onClick="openurl('https://zhanglab.ccmb.med.umich.edu/I-TASSER/')"/>
-				<img src="logo/trRosetta.png" width="120" height="45" alt="" title="基于机器学习的从头建模" onClick="openurl('https://yanglab.nankai.edu.cn/trRosetta/help/')"/>
-				<img src="logo/RaptorX.png" width="120" height="45" alt="" title="基于机器学习的蛋白建模和Contact预测" onClick="openurl('http://raptorx.uchicago.edu/')"/>
+			<div id="dockpep" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p class="text"><b>蛋白质-肽对接工具</b></p>
+					<img src="logo/CABS.png" width="120" height="45" alt="" title="蛋白-肽的蒙特卡洛模拟" onClick="openurl('http://biocomp.chem.uw.edu.pl/CABSdock/')"/>
+					<img src="logo/HPEPDOCK.png" width="120" height="45" alt="" title="快速蛋白-肽对接" onClick="openurl('http://huanglab.phys.hust.edu.cn/hpepdock/')"/>
+					<img src="logo/FlexPep.png" width="120" height="45" alt="" title="蛋白-肽柔性对接" onClick="openurl('http://flexpepdock.furmanlab.cs.huji.ac.il/')"/>
+					<hr>
+			</div>
+			<div id="abinito" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p class="text"><b>肽与蛋白从头建模</b></p>
+				<img src="logo/PEPFold.png" width="120" height="45" alt="" title="多肽折叠预测及对接" onClick="openurl('https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3')"/>
 				<img src="logo/AWSEM.png" width="120" height="45" alt="" title="基于模拟的蛋白质折叠" onClick="openurl('https://awsem.rice.edu/')"/>
 				<hr>
 			</div>
-		<div id="dock" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;display: inline">
-				<p class="text"><b>蛋白质-肽对接工具</b></p>
-				<img src="logo/ZDock.png" width="120" height="45" alt="" title="蛋白蛋白刚性对接" onClick="openurl('http://zdock.umassmed.edu/')"/>
-				<img src="logo/HADDock.png" width="120" height="45" alt="" title="给定结合位点信息的蛋白对接" onClick="openurl('https://milou.science.uu.nl/services/HADDOCK2.2/')"/>
-				<img src="logo/CABS.png" width="120" height="45" alt="" title="蛋白-肽的蒙特卡洛模拟" onClick="openurl('http://biocomp.chem.uw.edu.pl/CABSdock/')"/>
-				<img src="logo/HPEPDOCK.png" width="120" height="45" alt="" title="快速蛋白-肽对接" onClick="openurl('http://huanglab.phys.hust.edu.cn/hpepdock/')"/>
-				<img src="logo/FlexPep.png" width="120" height="45" alt="" title="蛋白-肽柔性对接" onClick="openurl('http://flexpepdock.furmanlab.cs.huji.ac.il/')"/>
-				<img src="logo/PEPFold.png" width="120" height="45" alt="" title="多肽折叠预测及对接" onClick="openurl('https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3')"/>
-				<hr>
-		</div>
-	</div><!--计算生物学工具区域-->
-	<div  style="width:1610px;height:auto;float:left">
-	<div id="other" class="hide" style="width:auto; height:auto; float:left; margin-right:40px;margin-bottom:20px;">
-			<div class="text" style="width:auto; height:auto;float:left;display:inline;margin-bottom:20px; margin-right:40px;">
-				<p><b>不常用电子资源</b></p>
-				<img src="logo/Gen-lib.png" width="120" height="45" alt="" title="专业专著电子书网站" onClick="search('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
-				<img src="logo/OBRC.png" width="120" height="45" alt="" title="生物信息学资源整理，数据库的数据库" onClick="search('http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=','&v%3Aproject=obrc&submit=Search')"/>
-				<img src="logo/BioRxiv.png" width="120" height="45" alt="" title="生物医学预印本网站" onClick="search('https://www.biorxiv.org/search/','')"/>
+			<div id="model" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p class="text"><b>蛋白质从头建模</b></p>
+					<img src="logo/trRosetta.png" width="120" height="45" alt="" title="基于机器学习的从头建模" onClick="openurl('https://yanglab.nankai.edu.cn/trRosetta/help/')"/>
+					<img src="logo/RaptorX.png" width="120" height="45" alt="" title="基于机器学习的蛋白建模和Contact预测" onClick="openurl('http://raptorx.uchicago.edu/')"/>
+					<hr>
 			</div>
-	</div> <!--其他-->
-	<div id="tool" class="hide" style="width:auto; height:auto; float:left;margin-bottom:20px;">
-			<p class="text"><b>小工具，欢迎提需求！</b></p>
-			<button type="button" title="PDBID之间用空格分隔，输入上方搜索框中，点此批量下载" onClick="pdbdownload()"><b>批量下载PDB</b></button>
-			<button type="button" title="将要查询的命令输入搜索框，点此查询" onClick="search('https://man.linuxde.net/','')"><b>Linux命令查询</b></button>
-	</div> <!--小工具-->
-	</div>
+			<div id="homo" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="hide">
+				<p class="text"><b>蛋白质同源建模</b></p>
+					<img src="logo/Swiss.png" width="120" height="45" alt="" title="最简单同源建模工具" onClick="openurl('https://swissmodel.expasy.org/interactive/')"/>
+					<img src="logo/I-TASSER.png" width="120" height="45" alt="" title="强大的组合同源建模及缺失片段补全工具" onClick="openurl('https://zhanglab.ccmb.med.umich.edu/I-TASSER/')"/>
+					<hr>
+			</div>
+		</div><!--其他工具区域-->
+	</div> <!--选项卡内容页面-->
 	<div class="text" style="width:auto;float:left;">
 		<div class="hide" id="contact-tab" style="width:auto;height:auto;float:left;margin-right:50px;">
 			<p><b>一个小小的调查问卷和小小的讨论群~</b></p>
