@@ -17,6 +17,7 @@
 	.wtext *{font-family:verdana; color: whitesmoke;}
 	.text *{font-family:verdana; color:black;}
 	button {font-weight: 400;text-align: center; white-space: nowrap; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; color: #fff;background-color:#E0FFFF; border-color: #007bff}
+	#contact {text-align: center; align-items:center;justify-content:center; display: none; position:absolute; top: 15%; left: 15%; width: 70%; height: 75%; padding: 20px; border: 10px solid #33B3BD; background-color: white; z-index:1002; overflow: auto;}
 	#card-ab{width:650px;height:auto;float:left;}
     #cardtab button{display: inline-block;font-weight: 400;text-align: center; white-space: nowrap; vertical-align: middle; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; line-height: 1.5; border-radius: 0.25rem; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; color: #fff;background-color: #007bff; border-color: #007bff}
 	</style> <!--选项卡切换风格模块-->
@@ -68,10 +69,18 @@
 		else{
 			id1.className="show"
 		}}
+	function show(id2){
+		if (id2.style.display==='block'){
+			id2.style.display='none';
+		}else{
+			id2.style.display='block'
+		}
+		
+		}
 </script> <!--选项卡切换Script模块-->
 </head>
-<body style="margin-left:60px;width:1620px;" >
-	<div data-role="header" id="header" style="width:1610px; height:auto;background-image:url(./fig/fig3.png); width:1660px;height:140px;border:0px;">
+<body style="margin-left:5%;width:90%;margin-right: 5%;" >
+	<div data-role="header" id="header" style="width:100%; align-items:center;justify-content:center; height:auto;background-image:url(./fig/fig3.png);border:0px;">
 		<hr><h2 class="text"><b>生物医学搜索及工具导航</b></h2><hr>
 		<div class="btn-toolbar" role="label">
 			<div class="btn-group mr-2" role="group" style="height:40px;float:left;">
@@ -79,7 +88,7 @@
 			 	<button class="btn btn-secondary" onClick="NC();NC();NC();">简约</button>
 				<button class="btn btn-secondary" onClick="window.location.href ='./ComBio-CN.html'">1.0</button>
 				<button class="btn btn-secondary" onClick="SetHomepage(window.location.href)"><b>设为主页</b></button>
-				<button class="btn btn-light" style="color:red" onClick="loadcard(contact)"><b>Join Us</b></button>
+				<button class="btn btn-light" id="join" style="color:red" onClick="show(contact);"><b>Join Us</b></button>
 				<button class="btn btn-info" onClick="openurl('mailto:wanglin3@shanghaitech.edu.cn')">联系我们</button>
 				<button class="btn btn-info" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')">社区</button>
 			 	<button class="btn btn-light" onClick="openurl('https://zhuanlan.zhihu.com/p/158597613')">About</button>
@@ -98,10 +107,10 @@
 			</div>
 		</div><!--网页头部基本选项卡+可切换选项卡-->
 	</div><!--网页头部-->
-	<div class="search" style="width:1610px;margin-bottom:30px;height:auto;">
+	<div class="search" style="width:100%;margin-bottom:30px;height:auto;">
 		<input name="textinput" type="text" id="textinput" placeholder="在此输入英文关键词，点击下方图标搜索" size="70" maxlength="9000" height="30" hspace="4000" style="border:2px solid #378888"/>
 	</div><!--搜索关键词输入框-->
-	<div id="base" class="text" style="width:1610px; height:auto;float:left;margin-bottom:0px;">
+	<div id="base" class="text" style="width:100%; height:auto;float:left;margin-bottom:0px;">
 		<div id="paper-db" style="width:auto; height:auto; float:left; margin-right:40px; display:inline">	
 			<p><b>学术出版物、资源与学术名词查询</b></p>
 			<img src="./logo/Pubmed.png" width="120" height="45" alt="" title="NCBI文献数据库" onClick="search('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
@@ -126,7 +135,7 @@
 			</ol>
 		</div>
 	</div><!--基础搜索栏-->
-	<div id="cardcontent" class="text" style="width:1610px;height:auto;float:left">
+	<div id="cardcontent" class="text" style="width:100%;height:auto;float:left">
 		<div style="width:auto; height:auto; float:left; margin-right:40px; display:inline">
 			<div id="protein" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>蛋白互作与蛋白家族数据库</b></p>
@@ -276,9 +285,9 @@
 			</div>
 		</div><!--其他工具区域-->
 	</div> <!--选项卡内容页面-->
-	<div class="hide" id="contact" align="center" style="width:auto; height:auto; float:left;">
-		<div><h3 class="text"><b>我们的讨论群，欢迎加群交流和吐槽！</b></h3>
-		<img src="fig/Bio.png" width="600" height="350" style="border:none;" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/></div>
+	<div class="pop" id="contact">
+		<div><h3 class="text"><b>我们的讨论群，欢迎加群交流和吐槽！</b></h3><hr>
+		<img src="fig/Bio.png" width="1200" height="700" style="border:none;width:80%;height:auto;margin-top:2%;" alt="" onClick="openurl('https://jq.qq.com/?_wv=1027&k=rsjIG4mo')" title="一个小小的讨论群，点一下就可以啦~"/></div>
 	</div><!--网页尾部关于我们信息-->
 </body>
 </html>
