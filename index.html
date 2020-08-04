@@ -7,7 +7,7 @@
 <style>
 	img{border:1px solid #070707;background-color: white}
     img:hover{border:3px solid red}
-	.search { width: 60%; margin: 12px auto; display: flex;}
+	.search {margin: 12px 0px; display: flex;}
     .search input{float:inherit;flex: 2;height: 50px; outline: none; border: 1px solid red;box-sizing: border-box; padding-left: 5px;｝
 </style> <!--全局风格-->
 
@@ -23,11 +23,9 @@
 	</style> <!--选项卡切换风格模块-->
 <script type="text/javascript">
 	function search(prefix,postfix){
-	var url= prefix + document.getElementById("textinput").value + postfix
+	var url= prefix + document.getElementById("textinput").value + postfix //获取搜索框中的内容并组成新url
 	window.open(url)}
-	function openurl(url){
-	window.open(url)
-	}
+	function openurl(url){window.open(url)}
 	function pdbdownload(){
 	var inputids = document.getElementById("textinput").value
 	var pdbids = inputids.split(" ")
@@ -36,6 +34,11 @@
 		window.open(dlurl)}}
 </script> <!--核心功能模块-->
 <script type="text/javascript">
+	function resize() {
+		var s;
+		s = window.screen.width / 2280;
+		document.body.style.zoom = s;
+	}
 	function CF(){
 		document.body.style.backgroundColor="#282828"
 		document.getElementById('header').style.backgroundImage=""
@@ -79,8 +82,8 @@
 		}
 </script> <!--选项卡切换Script模块-->
 </head>
-<body style="margin-left:5%;width:90%;margin-right: 5%;" >
-	<div data-role="header" id="header" style="width:100%; align-items:center;justify-content:center; height:auto;background-image:url(./fig/fig3.png);border:0px;">
+<body style="margin-left:70px;width:1610px;" onLoad="resize()">
+	<div data-role="header" id="header" style="width:1610px; align-items:center;justify-content:center; height:auto;background-image:url(./fig/fig3.png);border:0px;">
 		<hr><h2 class="text"><b>生物医学搜索及工具导航</b></h2><hr>
 		<div class="btn-toolbar" role="label">
 			<div class="btn-group mr-2" role="group" style="height:40px;float:left;">
@@ -107,7 +110,7 @@
 			</div>
 		</div><!--网页头部基本选项卡+可切换选项卡-->
 	</div><!--网页头部-->
-	<div class="search" style="width:100%;margin-bottom:30px;height:auto;">
+	<div class="search" style="width:1610px;margin-bottom:30px;height:auto;text-align: left">
 		<input name="textinput" type="text" id="textinput" placeholder="在此输入英文关键词，点击下方图标搜索" size="70" maxlength="9000" height="30" hspace="4000" style="border:2px solid #378888"/>
 	</div><!--搜索关键词输入框-->
 	<div id="base" class="text" style="width:100%; height:auto;float:left;margin-bottom:0px;">
@@ -293,6 +296,7 @@
 </html>
 
 <!--
+	<div data-role="header" id="header" style="width:100%; align-items:center;justify-content:center; height:auto;background-image:url(./fig/fig3.png);border:0px;">
 		<div id="com-bio" class="show">
 			<div style="width:1610px; height:auto; float:left;">
 				<div style="width:805px; height:auto; float:left; display:inline;"></div>
