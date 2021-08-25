@@ -1,4 +1,4 @@
-# Bio-db-Search
+# Biodb-Search
 # 生物数据库搜索导航
 
 [点击此处进入网页](https://bio-lin-187cad-1302119316.tcloudbaseapp.com/)
