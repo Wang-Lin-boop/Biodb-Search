@@ -118,13 +118,13 @@
 			</div> <!--调整基础背景风格的基础选项卡-->
 			<div id="cardtab" style="height:40px;float:left;">
         		<button class="bili" onClick="loadcard(protein);loadcard(basetool);loadcard(expression);loadcard(expressiontool);dilibili(this);">蛋白矿工</button>
-				<button class="bili" onClick="loadcard(drug);loadcard(drugtool);dilibili(this);">药物设计</button>
+				<button class="bili" onClick="loadcard(drug);loadcard(drugtool);loadcard(target-fishing);dilibili(this);">药物设计</button>
 				<button class="bili" onClick="loadcard(metabolic);loadcard(mettool);dilibili(this);">酶与代谢</button>
 				<button class="bili" onClick="loadcard(bioinfo);loadcard(basebioinfo);dilibili(this);">生物信息</button>
 				<button class="bili" onClick="loadcard(biostru);loadcard(moldis);dilibili(this);">生物结构</button>
 				<button class="bili" onClick="loadcard(dockpro);loadcard(dockpep);dilibili(this);">分子对接</button>
-				<button class="bili" onClick="loadcard(model);loadcard(abinito);loadcard(homo);dilibili(this);">分子建模</button>
-				<button class="bili" onClick="loadcard(other);loadcard(othertools);dilibili(this);">其他</button>
+				<button class="bili" onClick="loadcard(model);loadcard(abinito);dilibili(this);">分子建模</button>
+				<button class="dili" onClick="loadcard(other);loadcard(othertools);dilibili(this);">其他</button>
 				<button class="dili" onClick="loadcard(tool);dilibili(this);">小工具</button>
 			</div>
 		</div><!--网页头部基本选项卡+可切换选项卡-->
@@ -142,12 +142,12 @@
 		</div>
 		<div id="base-db" style="width:auto; height:auto;margin-right:40px;float:left; display:inline">
 			<p><b>基本生物元件与通路查询</b></p>
-			<img src="./logo/Uniprot.jpg" width="120" height="45" alt="" title="最常用的蛋白质数据库" onClick="search('https://www.uniprot.org/uniprot/?sort=score&query=',' ')"/>
+			<img src="./logo/Uniprot.jpg" width="120" height="45" alt="" title="最常用的蛋白质数据库，查询蛋白的功能、修饰、结构、家族、遗传突变等信息" onClick="search('https://www.uniprot.org/uniprot/?sort=score&query=',' ')"/>
 			<img src="logo/PDB.png" width="120" height="45" alt="" title="RCSB PDB，目前蛋白质结构数据库中最好用的一个" onClick="search('http://www.rcsb.org/search?query=%7B%22parameters%22%3A%7B%22value%22%3A%22','%22%7D%7D')"/>
-			<img src="./logo/ChemBL.png" width="120" height="45" alt="" title="生物活性数据库" onClick="search('https://www.ebi.ac.uk/chembl/g/#search_results/all/query=',' ')"/>
-			<img src="logo/Reactome.png" width="120" height="45" alt="" title="代谢与信号通路数据库" onClick="search('https://reactome.org/content/query?q=','&species=Homo+sapiens&species=Entries+without+species&cluster=true')"/>
+			<img src="logo/Reactome.png" width="120" height="45" alt="" title="代谢与信号通路数据库，可以查询蛋白质在信号通路中的位置及作用" onClick="search('https://reactome.org/content/query?q=','&species=Homo+sapiens&species=Entries+without+species&cluster=true')"/>
 			<img src="logo/GeneCards.png" width="120" height="45" alt="" title="基因相关数据库，可查询相关转录单位及调控元件信息，可查询蛋白抗体的相关信息" onClick="search('https://www.genecards.org/cgi-bin/carddisp.pl?gene=',' ')"/>
-			<img src="./logo/PubChem.png" width="120" height="45" alt="" title="NCBI化合物数据库" onClick="search('https://pubchem.ncbi.nlm.nih.gov/#query=',' ')"/>
+			<img src="./logo/ChemBL.png" width="120" height="45" alt="" title="生物活性数据库，查询化合物的生物学活性数据、靶点等" onClick="search('https://www.ebi.ac.uk/chembl/g/#search_results/all/query=',' ')"/>
+			<img src="./logo/PubChem.png" width="120" height="45" alt="" title="NCBI的化合物数据库，可以查询化合物的介绍、属性以及药理活性" onClick="search('https://pubchem.ncbi.nlm.nih.gov/#query=',' ')"/>
 			<hr>
 		</div>
 		<div id="rare" style="width:auto; height:auto; float:left; display:inline;margin-right:40px">
@@ -189,7 +189,6 @@
 			</div>
 			<div id="bioinfo" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>蛋白质表达修饰分析</b></p>
-
 				<img src="logo/SignIP.png" width="120" height="45" alt="" title="信号肽及亚细胞定位预测" onClick="openurl('http://www.cbs.dtu.dk/services/SignalP/')"/>
 				<img src="logo/PPSP.png" width="120" height="45" alt="" title="蛋白质磷酸化位点预测" onClick="openurl('http://ppsp.biocuckoo.org/')"/>
 				<img src="logo/DTU.png" width="120" height="45" alt="" title="蛋白质PTM\分选等位点预测" onClick="openurl('http://www.cbs.dtu.dk/services/')"/>
@@ -197,13 +196,13 @@
 			</div>
 
 			<div id="biostru" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
-				<p><b>生物结构数据库</b></p>
+				<p><b>生物结构数据库及分析工具</b></p>
 				<img src="logo/OPM.png" width="120" height="45" alt="" title="膜蛋白结构数据库" onClick="search('https://opm.phar.umich.edu/proteins?search=',' ')"/>
-				<img src="./logo/PDBj.png" width="120" height="45" alt="" title="日本蛋白质结构数据库，有中文版" onClick="openurl('https://pdbj.org/mine/search?query=',' ')"/>
-				<img src="logo/PDB-download.png" width="120" height="45" title="PDB批量下载" alt="" onClick="openurl('http://www.rcsb.org/downloads')"/>
+				<img src="logo/SAVES.png" width="120" height="45" alt="" title="蛋白质模型评价" onClick="openurl('https://servicesn.mbi.ucla.edu/SAVES/')"/>
+				<img src="logo/AF2.png" width="120" height="45" alt="" title="目前最强大的蛋白质结构预测工具AlphaFold2所预测的蛋白质的数据库" onClick="search('https://alphafold.ebi.ac.uk/search/text/','')"/>
 				<hr>
 			</div>
-			<div id="other" class="show" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;">
+			<div id="other" class="hide" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;">
 				<div class="text" style="width:auto; height:auto;float:left;">
 					<p><b>不常用电子资源</b></p>
 					<img src="logo/Gen-lib.png" width="120" height="45" alt="" title="专业专著电子书网站" onClick="search('http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=',' ')"/>
@@ -219,9 +218,9 @@
 				<img src="logo/BLAST.png" width="120" height="45" alt="" title="最常用的序列比对软件" onClick="openurl('https://blast.ncbi.nlm.nih.gov/Blast.cgi')"/>
 				<img src="logo/HHpred.png" width="120" height="45" alt="" title="可用于查找PDB中适合的建模模板" onClick="openurl('https://toolkit.tuebingen.mpg.de/tools/hhpred')"/>
 				<img src="logo/Map.png" width="120" height="45" alt="" title="Uniprot中的不同数据库间条目Map工具" onClick="openurl('https://www.uniprot.org/uploadlists/')"/>
-				<img src="logo/CavityPlus.png" width="120" height="45" alt="" title="蛋白结构口袋分析工具" onClick="openurl('http://www.pkumdl.cn:8000/cavityplus/computation.php')"/>
+				<img src="logo/PeptideCutter.png" width="120" height="45" alt="" title="蛋白质酶切位点预测" onClick="openurl('https://web.expasy.org/peptide_cutter/')"/>
 				<img src="logo/ProtParam.png" width="120" height="45" alt="" title="蛋白质基本性质预测" onClick="openurl('https://web.expasy.org/protparam/')"/>
-				<img src="logo/SAVES.png" width="120" height="45" alt="" title="蛋白质模型评价" onClick="openurl('https://servicesn.mbi.ucla.edu/SAVES/')"/>
+				<img src="logo/ProteInfer.png" width="120" height="45" alt="" title="蛋白质功能预测" onClick="openurl('https://google-research.github.io/proteinfer/')"/>
 				<hr>
 			</div>
 			<div id="expressiontool" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
@@ -237,9 +236,9 @@
 			<div id="drugtool" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>药物研发在线工具</b></p>
 				<img src="logo/RPBS.png" width="120" height="45" alt="" title="综合药物设计辅助分析网站" onClick="openurl('https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#welcome')"/>
-				<img src="logo/SEA.png" width="120" height="45" alt="" title="介于小分子2D结构相似性的靶标垂钓" onClick="openurl('https://sea.bkslab.org/')"/>
-				<img src="logo/CM.png" width="120" height="45" alt="" title="基于小分子形状相似性的靶标垂钓" onClick="openurl('http://lilab-ecust.cn/chemmapper/')"/>
+				<img src="logo/CavityPlus.png" width="120" height="45" alt="" title="蛋白结构口袋分析工具" onClick="openurl('http://www.pkumdl.cn:8000/cavityplus/computation.php')"/>
 				<img src="logo/SwissADME.png" width="120" height="45" alt="" title="小分子吸收、分布、代谢、排泄性质预测" onClick="openurl('http://potentia.cbs.dtu.dk/ChemProt/')"/>
+				<img src="logo/ADMETlab.png" width="120" height="45" alt="" title="小分子药物化学性质预测" onClick="openurl('http://admet.scbdd.com/home/index/')"/>
 				<img src="logo/ChemSAR.png" width="120" height="45" alt="" title="配体基础的药物筛选" onClick="openurl('http://chemsar.scbdd.com/home/index/')"/>
 				<img src="logo/DeepScreening.png" width="120" height="45" alt="" title="深度学习基础的化合物SAR筛选" onClick="openurl('http://deepscreening.xielab.net/screening')"/>
 				<hr>
@@ -274,14 +273,11 @@
 				<img src="logo/LINCS.png" width="120" height="45" alt="" title="多维基因表达数据集" onClick="openurl('http://lincsportal.ccs.miami.edu/dcic-portal/')"/>
 				<hr>
 			</div>
-			<div id="othertools" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show">
+			<div id="othertools" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="hide">
 				<p><b>其他工具</b></p>
 				<img src="logo/GreenMedical.png" width="120" height="45" alt="" title="国产科研工具套件" onClick="search('https://www.geenmedical.com/search?query=%7B%22keyword%22:%22','%22%7D')"/>
 				<img src="logo/Color.png" width="120" height="45" alt="" title="Chimera颜色板" onClick="openurl('https://www.cgl.ucsf.edu/chimerax/docs/user/commands/colornames.html')"/>
-				<img src="logo/PeptideCutter.png" width="120" height="45" alt="" title="蛋白质酶切位点预测" onClick="openurl('https://web.expasy.org/peptide_cutter/')"/>
 				<img src="logo/sgRNA.png" width="120" height="45" alt="" title="sgRNA设计工具" onClick="openurl('https://zlab.bio/guide-design-resources')"/>
-				<img src="logo/ProteInfer.png" width="120" height="45" alt="" title="蛋白质功能预测" onClick="openurl('https://google-research.github.io/proteinfer/')"/>
-				<img src="logo/ADMETlab.png" width="120" height="45" alt="" title="小分子药物化学性质预测" onClick="openurl('http://admet.scbdd.com/home/index/')"/>
 				<hr>
 			</div>
 		</div><!--基本在线工具区域-->
@@ -300,6 +296,13 @@
 					<img src="logo/FlexPep.png" width="120" height="45" alt="" title="蛋白-肽柔性对接" onClick="openurl('http://flexpepdock.furmanlab.cs.huji.ac.il/')"/>
 					<hr>
 			</div>
+			<div id="target-fishing" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
+				<p class="text"><b>药物靶标发现工具</b></p>
+				<img src="logo/SEA.png" width="120" height="45" alt="" title="介于小分子2D结构和蛋白质靶标相似性信息的靶标垂钓" onClick="openurl('https://sea.bkslab.org/')"/>
+				<img src="logo/Swiss-Target.png" width="120" height="45" alt="" title="介于小分子2D结构相似性的靶标垂钓" onClick="openurl('http://swisstargetprediction.ch/')"/>
+				<img src="logo/CM.png" width="120" height="45" alt="" title="基于小分子形状相似性的靶标垂钓" onClick="openurl('http://lilab-ecust.cn/chemmapper/')"/>
+				<hr>
+			</div>
 			<div id="abinito" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
 				<p class="text"><b>肽与蛋白从头建模</b></p>
 				<img src="logo/PEPFold.png" width="120" height="45" alt="" title="多肽折叠预测及对接" onClick="openurl('https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3')"/>
@@ -308,14 +311,7 @@
 				<hr>
 			</div>
 			<div id="model" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
-				<p class="text"><b>基于机器学习的从头建模</b></p>
-					<img src="logo/trRosetta.png" width="120" height="45" alt="" title="基于机器学习的从头建模，Rosetta系列" onClick="openurl('https://yanglab.nankai.edu.cn/trRosetta/help/')"/>
-					<img src="logo/RaptorX.png" width="120" height="45" alt="" title="基于机器学习的蛋白建模和Contact预测" onClick="openurl('http://raptorx.uchicago.edu/')"/>
-					<img src="logo/AF2.png" width="120" height="45" alt="" title="目前最强大的蛋白质结构预测工具AlphaFold2所预测的蛋白质的数据库" onClick="search('https://alphafold.ebi.ac.uk/search/text/','')"/>
-					<hr>
-			</div>
-			<div id="homo" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
-				<p class="text"><b>蛋白质同源建模与组合建模</b></p>
+				<p class="text"><b>蛋白质建模</b></p>
 					<img src="logo/Swiss.png" width="120" height="45" alt="" title="最简单同源建模工具" onClick="openurl('https://swissmodel.expasy.org/interactive/')"/>
 					<img src="logo/I-TASSER.png" width="120" height="45" alt="" title="强大的组合同源建模及缺失片段补全工具" onClick="openurl('https://zhanglab.ccmb.med.umich.edu/I-TASSER/')"/>
 					<img src="logo/Robetta.png" width="120" height="45" alt="" title="整合蛋白质预测方法，包含CM、TR以及AB方法" onClick="openurl('http://new.robetta.org/submit.php')"/>
