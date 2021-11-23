@@ -102,6 +102,22 @@
 			dblab.className="dili"
 		}}
 </script> <!--选项卡切换Script模块-->
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'ಠ·ಠ 你不理我了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '∩ω∩ 你回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },200);
+        }
+    });
+})();
+</script> <!--调皮捣蛋模块-->
 </head>
 <body style="margin-left:70px;width:1610px;" onLoad="resize()">
 	<div data-role="header" id="header" style="width:1610px; align-items:center;justify-content:center; height:auto;background-image:url(./fig/fig3.png);border:0px;">
