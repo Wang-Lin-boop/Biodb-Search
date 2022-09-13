@@ -104,7 +104,7 @@
 	<div class="search" style="width:1610px;margin-bottom:30px;height:auto;text-align: left">
 		<input name="textinput" type="text" id="textinput" placeholder="在此输入英文关键词，点击下方图标搜索" size="70" maxlength="9000" height="30" hspace="4000" style="border:2px solid #378888"/>
 	</div><!--搜索关键词输入框-->
-	<div id="base" class="text" style="width:100%; height:auto;float:left;margin-bottom:0px;">
+	<div id="base" class="text" style="width:75%; height:auto;float:left;margin-bottom:0px;">
 		<div id="paper-db" style="width:auto; height:auto; float:left; margin-right:40px; display:inline">	
 			<p><b>学术出版物、资源与学术名词查询</b></p>
 			<img src="./logo/Pubmed.png" width="120" height="45" alt="" title="NCBI文献数据库" onClick="search('https://www.ncbi.nlm.nih.gov/pubmed/?term=',' ')"/>
@@ -122,14 +122,6 @@
 			<img src="./logo/PubChem.png" width="120" height="45" alt="" title="NCBI的化合物数据库，可以查询化合物的介绍、属性以及药理活性" onClick="search('https://pubchem.ncbi.nlm.nih.gov/#query=',' ')"/>
 			<hr>
 		</div>
-		<div id="rare" style="width:auto; height:auto; float:left; display:inline;margin-right:40px">
-			<p><b>常用罕见字母</b></p>
-			<ol>
-			<p><b>Å ö ξ ω ψ ϕ ζ ①②③④⑤ ± ☑ Δ ∞</b></p>
-			</ol>
-		</div>
-	</div><!--基础搜索栏-->
-	<div id="cardcontent" class="text" style="width:100%;height:auto;float:left">
 		<div style="width:auto; height:auto; float:left; margin-right:40px; display:inline">
 			<div id="protein" style="width:auto; height:auto; float:left;margin-bottom:20px; margin-right:40px;" class="show" >
 				<p><b>蛋白互作与蛋白家族数据库</b></p>
@@ -255,6 +247,14 @@
 				<hr>
 			</div>
 		</div><!--基本在线工具区域-->
+	</div> <!--选项卡内容页面-->
+	<div id="base" class="text" style="width:25%; height:auto;float:right;margin-bottom:0px;">
+		<div id="rare" style="width:auto; height:auto; float:left; display:inline;margin-right:40px">
+			<p><b>常用罕见字母</b></p>
+			<ol>
+			<p><b>Å ö ξ ω ψ ϕ ζ ①②③④⑤ ± ☑ Δ ∞</b></p>
+			</ol>
+		</div>
 		<div style="width:auto; height:auto; float:left;display:inline">
 			<div id="dockpro" style="width:auto; height:auto; float:left;margin-bottom:20px;" class="show">
 				<p class="text"><b>蛋白蛋白对接工具</b></p>
@@ -302,7 +302,7 @@
 				<button type="button" title="输入BindingDB的MonomerID以查询Monomer" onClick="search('https://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=','')"><b>BindingDB Monomer</b></button>
 			</div> <!--小工具-->
 		</div><!--其他工具区域-->
-	</div> <!--选项卡内容页面-->
+	</div>
 	<div class="pop" id="contact">
 		<div><h3 class="text"><b>我们的公众号，欢迎关注！关注后回复加群可以获取社区二维码!</b></h3><hr>
 		<img src="fig/protein.png" width="1500" height="600" style="border:none;width:80%;height:auto;margin-top:2%;" alt="" title="微信搜索蛋白矿工或者CADDpro就可以了。"/></div>
