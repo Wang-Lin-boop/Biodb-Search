@@ -34,8 +34,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 130px;
-            height: 50px;
+            width: 145px;
+            height: 60px;
             background: white;
             border-radius: 4px;
             border: 1px solid #e2e8f0;
@@ -174,7 +174,7 @@
                         <span id="old-version">Old Version</span>
                     </button>
                     <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow" 
-                            onclick="window.location.href='https://wang-lin-boop.github.io/Biodb-Search/'">
+                            onclick="window.location.href='./index.html'">
                         <span id="new-version">New Version</span>
                     </button>
                     <button id="wechat-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow">
@@ -194,8 +194,8 @@
                     <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow"> | </button>
                 </div>
                 <div class="mt-2 flex flex-wrap gap-2 justify-center">
-                    <button data-category="protein" class="category-btn active bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
-                        <span id="category-protein">Protein Miner</span>
+                    <button data-category="default" class="category-btn active bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-default">Protein Miner</span>
                     </button>
                     <button data-category="drug" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
                         <span id="category-drug">Drug Design</span>
@@ -229,15 +229,15 @@
     <!-- Main Content -->
     <main class="max-w-8xl mx-auto px-4 py-6">
         <div class="flex flex-col lg:flex-row gap-6">
-            <!-- Left Column (6/7 width) -->
-            <div class="lg:w-6/7">
+            <!-- Left Column (11/14 width) -->
+            <div class="lg:w-11/14">
                 <div id="dynamic-content" class="space-y-8">
                     <!-- Content will be loaded dynamically -->
                 </div>
             </div>
             
-            <!-- Right Column (1/7 width) -->
-            <div class="lg:w-1/7 space-y-6">
+            <!-- Right Column (3/14 width) -->
+            <div class="lg:w-3/14 space-y-6">
                 <!-- Special Characters -->
                 <div class="sidebar-card">
                     <h3 class="text-lg font-semibold mb-3 text-teal-800">
@@ -307,7 +307,7 @@
             <h3 class="text-xl font-bold text-gray-800 mb-3" id="contact-title">Our WeChat Official Account</h3>
             <p class="text-gray-600 mb-4" id="contact-description">Reply "Join Group" after following to get the community QR code</p>
             <div class="border-4 border-teal-500 p-1 inline-block rounded-xl">
-                <img src="fig/protein.png" alt="WeChat Official Account" class="w-64 h-64 object-contain">
+                <img src="fig/protein.png" alt="WeChat Official Account" class="w-200 h-50 object-contain">
             </div>
             <button onclick="closeContact()" class="mt-6 px-6 py-2.5 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors font-medium shadow">
                 <span id="close-btn">Close</span>
@@ -328,7 +328,7 @@
                 'wechat-account': '公众号',
                 'feedback': '意见箱',
                 'about-author': '关于作者',
-                'category-protein': '蛋白矿工',
+                'category-default': '蛋白矿工',
                 'category-drug': '药物设计',
                 'category-metabolic': '酶与代谢',
                 'category-bioinfo': '生物信息',
@@ -372,7 +372,7 @@
                 'wechat-account': 'WeChat Account',
                 'feedback': 'Feedback',
                 'about-author': 'About Author',
-                'category-protein': 'Protein Miner',
+                'category-default': 'Protein Miner',
                 'category-drug': 'Drug Design',
                 'category-metabolic': 'Enzymes & Metabolism',
                 'category-bioinfo': 'Bioinformatics',
@@ -576,10 +576,21 @@
             
             // Re-render content with new titles
             renderContent('default');
+
+            const activeBtn = document.querySelector('[data-category].active');
+            if (activeBtn) {
+                renderContent(activeBtn.dataset.category);
+            } else {
+                renderContent('default');
+            }
         }
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
+            // Set English as default language
+            switchLanguage('zh');
+
+            // Render initial content
             renderContent('default');
             renderDockTools();
             renderModelingTools();
@@ -587,11 +598,14 @@
             setupEventListeners();
             
             // Set default category as active
-            document.querySelector('[data-category="protein"]').classList.add('active');
-            
-            // Set English as default language
-            switchLanguage('zh');
-            
+            const defaultBtn = document.querySelector('[data-category="default"]');
+
+            if (defaultBtn) {
+                document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+                defaultBtn.classList.add('active');
+                renderContent(defaultBtn.dataset.category);
+            }
+
             // Language switch event listeners
             document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
             document.getElementById('lang-zh').addEventListener('click', () => switchLanguage('zh'));
@@ -670,12 +684,11 @@
         function getCategoriesByKey(key) {
             const categoryMap = {
                 publication: ['publication'],
-                protein: ['protein', 'bioinfo', 'biostru'],
-                drug: ['protein', 'drug'],
-                metabolic: ['publication', 'metabolic', 'protein', 'bioinfo'],
+                drug: ['protein', 'drug', 'publication'],
+                metabolic: ['metabolic', 'protein', 'publication'],
                 bioinfo: ['protein', 'bioinfo', 'publication'],
                 biostru: ['protein', 'biostru', 'publication'],
-                experiment: ['protein', 'bioinfo', 'experiment'],
+                experiment: ['protein', 'bioinfo', 'experiment', 'publication'],
                 default: ['protein', 'drug', 'bioinfo', 'biostru']
             };
             
@@ -747,10 +760,10 @@
         // Setup event listeners
         function setupEventListeners() {
             // Category buttons
-            document.querySelectorAll('#categories button').forEach(btn => {
+            document.querySelectorAll('[data-category]').forEach(btn => {
                 btn.addEventListener('click', function() {
                     // Update active state
-                    document.querySelectorAll('#categories button').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
                     // Render content for this category
