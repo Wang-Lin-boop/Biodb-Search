@@ -44,6 +44,7 @@
             cursor: pointer;
             overflow: hidden;
             padding: 4px;
+            position: relative; /* 为tooltip定位做准备 */
         }
         
         .tool-img {
@@ -138,6 +139,43 @@
         .lang-btn:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
+        
+        /* 自定义tooltip样式 */
+        .custom-tooltip {
+            position: absolute;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            pointer-events: none;
+            max-width: 300px;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0;
+            transform: translateY(13px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .custom-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 添加箭头 */
+        .custom-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-bottom-color: rgba(0, 0, 0, 0.85);
+        }
     </style>
     <script>
         tailwind.config = {
@@ -156,6 +194,9 @@
     </script>
 </head>
 <body class="bg-gray-50 min-h-screen text-gray-800">
+    <!-- 自定义tooltip容器 -->
+    <div id="custom-tooltip" class="custom-tooltip"></div>
+    
     <!-- Language Switch -->
     <div class="lang-switch">
         <button id="lang-en" class="lang-btn">English</button>
@@ -319,6 +360,62 @@
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
     <script>
+        // 自定义tooltip功能
+        function initTooltip() {
+            const tooltip = document.getElementById('custom-tooltip');
+            
+            // 为所有工具图片添加事件监听
+            document.querySelectorAll('.tool-img-container').forEach(container => {
+                const img = container.querySelector('.tool-img');
+                
+                // 移除原生title提示
+                if (img.title) {
+                    img.dataset.tooltip = img.title;
+                    img.removeAttribute('title');
+                }
+                
+                container.addEventListener('mouseenter', function(e) {
+                    if (img.dataset.tooltip) {
+                        tooltip.textContent = img.dataset.tooltip;
+                        tooltip.classList.add('visible');
+                        updateTooltipPosition(e);
+                    }
+                });
+                
+                container.addEventListener('mousemove', function(e) {
+                    if (img.dataset.tooltip) {
+                        updateTooltipPosition(e);
+                    }
+                });
+                
+                container.addEventListener('mouseleave', function() {
+                    tooltip.classList.remove('visible');
+                });
+            });
+        }
+        
+        function updateTooltipPosition(e) {
+            const tooltip = document.getElementById('custom-tooltip');
+            const offset = 20; // 距离鼠标上方20px
+            
+            // 计算位置
+            const x = e.clientX;
+            const y = e.clientY - offset - tooltip.offsetHeight;
+            
+            // 防止超出屏幕左侧
+            const left = Math.max(10, x - tooltip.offsetWidth / 2);
+            
+            // 防止超出屏幕右侧
+            const maxRight = window.innerWidth - tooltip.offsetWidth - 10;
+            const finalLeft = Math.min(left, maxRight);
+            
+            // 防止超出屏幕上边缘
+            const finalTop = Math.max(10, y);
+            
+            tooltip.style.left = `${finalLeft}px`;
+            tooltip.style.top = `${finalTop}px`;
+        }
+        
         // Translation dictionary
         const translations = {
             'zh': {
@@ -501,16 +598,16 @@
                     id: 'bioinfo',
                     title: '生物信息学工具与资源',
                     tools: [
-                        {name: 'Map', logo: './logo/Map.png', prefix: 'https://www.uniprot.org/uploadlists/', suffix: '', title: '不同数据库间条目Map工具', type: 'direct'},
-                        {name: 'BLAST', logo: './logo/BLAST.png', prefix: 'https://blast.ncbi.nlm.nih.gov/Blast.cgi', suffix: '', title: '序列比对软件', type: 'direct'},
+                        {name: 'Map', logo: './logo/Map.png', prefix: 'https://www.uniprot.org/uploadlists/', suffix: '', title: '不同数据库间条目的映射工具', type: 'direct'},
+                        {name: 'BLAST', logo: './logo/BLAST.png', prefix: 'https://blast.ncbi.nlm.nih.gov/Blast.cgi', suffix: '', title: '最流行的序列搜库软件', type: 'direct'},
+                        {name: 'DALI', logo: './logo/DALI.png', prefix: 'http://ekhidna2.biocenter.helsinki.fi/dali/', suffix: '', title: '蛋白质结构搜库', type: 'direct'},
+                        {name: 'HMMER', logo: './logo/HMMER.png', prefix: 'https://www.ebi.ac.uk/Tools/hmmer/search/phmmer', suffix: '', title: '蛋白质序列搜库', type: 'direct'},
                         {name: 'String', logo: './logo/String.png', prefix: 'https://string-db.org/cgi/network.pl', suffix: '', title: '蛋白质互作分析数据库', type: 'direct'},
                         {name: 'CDHIT', logo: './logo/CDHIT.png', prefix: 'http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi', suffix: '', title: '生物序列聚类分析', type: 'direct'},
                         {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: '信号肽及亚细胞定位预测', type: 'search'},
                         {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: '蛋白质磷酸化位点预测', type: 'direct'},
                         {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: '蛋白质PTM&分选等位点预测', type: 'direct'},
                         {name: 'GPS', logo: './logo/GPS.png', prefix: 'https://sumo.biocuckoo.cn/index.php', suffix: '', title: '蛋白质修饰预测', type: 'direct'},
-                        {name: 'HMMER', logo: './logo/HMMER.png', prefix: 'https://www.ebi.ac.uk/Tools/hmmer/search/phmmer', suffix: '', title: '蛋白质序列搜库', type: 'direct'},
-                        {name: 'DALI', logo: './logo/DALI.png', prefix: 'http://ekhidna2.biocenter.helsinki.fi/dali/', suffix: '', title: '蛋白质结构搜库', type: 'direct'},
                         {name: 'MAFFT', logo: './logo/MAFFT.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/mafft/', suffix: '', title: '多序列比对软件', type: 'direct'},
                         {name: 'MUSCLE', logo: './logo/MUSCLE.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/muscle/', suffix: '', title: '高质量蛋白质序列比对', type: 'direct'},
                         {name: 'ESPript', logo: './logo/ESPript.png', prefix: 'http://espript.ibcp.fr/ESPript/cgi-bin/ESPript.cgi', suffix: '', title: '多序列比对作图工具', type: 'direct'},
@@ -538,22 +635,22 @@
             },
         }
         const dockTools = [
-            {name: 'ZDock', logo: './logo/ZDock.png', prefix: 'http://zdock.umassmed.edu/', suffix: '', title: 'Protein-Protein Rigid Docking', type: 'direct'},
-            {name: 'ClusPro', logo: './logo/ClusPro.png', prefix: 'https://cluspro.bu.edu/login.php', suffix: '', title: 'Protein Docking Optimization', type: 'direct'},
-            {name: 'HADDock', logo: './logo/HADDock2.4.png', prefix: 'https://bianca.science.uu.nl/haddock2.4/submit/1', suffix: '', title: 'Protein-Protein Docking', type: 'direct'},
-            {name: 'CABS Dock', logo: './logo/CABS.png', prefix: 'http://biocomp.chem.uw.edu.pl/CABSdock/', suffix: '', title: 'Protein-Peptide Recognition', type: 'direct'},
-            {name: 'HPEPDOCK', logo: './logo/HPEPDOCK.png', prefix: 'http://huanglab.phys.hust.edu.cn/hpepdock/', suffix: '', title: 'Fast Protein-Peptide Docking', type: 'direct'},
-            {name: 'FlexPep', logo: './logo/FlexPep.png', prefix: 'http://flexpepdock.furmanlab.cs.huji.ac.il/', suffix: '', title: 'Flexible Protein-Peptide Docking', type: 'direct'}
+            {name: 'ZDock', logo: './logo/ZDock.png', prefix: 'http://zdock.umassmed.edu/', suffix: '', title: '蛋白-蛋白刚性对接', type: 'direct'},
+            {name: 'ClusPro', logo: './logo/ClusPro.png', prefix: 'https://cluspro.bu.edu/login.php', suffix: '', title: '蛋白对接优化', type: 'direct'},
+            {name: 'HADDock', logo: './logo/HADDock2.4.png', prefix: 'https://bianca.science.uu.nl/haddock2.4/submit/1', suffix: '', title: '蛋白-蛋白对接', type: 'direct'},
+            {name: 'CABS Dock', logo: './logo/CABS.png', prefix: 'http://biocomp.chem.uw.edu.pl/CABSdock/', suffix: '', title: '蛋白-肽识别', type: 'direct'},
+            {name: 'HPEPDOCK', logo: './logo/HPEPDOCK.png', prefix: 'http://huanglab.phys.hust.edu.cn/hpepdock/', suffix: '', title: '快速蛋白-肽对接', type: 'direct'},
+            {name: 'FlexPep', logo: './logo/FlexPep.png', prefix: 'http://flexpepdock.furmanlab.cs.huji.ac.il/', suffix: '', title: '柔性蛋白-肽对接', type: 'direct'}
         ]
         const targetFishingTools = [
-            {name: 'SEA', logo: './logo/SEA.png', prefix: 'https://sea.bkslab.org/', suffix: '', title: '2D Structure-Based Target Fishing', type: 'direct'},
-            {name: 'ChemMapper', logo: './logo/CM.png', prefix: 'http://lilab-ecust.cn/chemmapper/', suffix: '', title: 'Small Molecule Shape Similarity-Based Target Fishing', type: 'direct'},
-            {name: 'TargetFisher', logo: './logo/MAI-TargetFisher.png', prefix: 'https://bailab.siais.shanghaitech.edu.cn/mai-targetfisher', suffix: '', title: 'Comprehensive Target Prediction Methodology', type: 'direct'}
+            {name: 'SEA', logo: './logo/SEA.png', prefix: 'https://sea.bkslab.org/', suffix: '', title: '基于2D结构的靶标垂钓', type: 'direct'},
+            {name: 'ChemMapper', logo: './logo/CM.png', prefix: 'http://lilab-ecust.cn/chemmapper/', suffix: '', title: '基于小分子形状相似性的靶标垂钓', type: 'direct'},
+            {name: 'TargetFisher', logo: './logo/MAI-TargetFisher.png', prefix: 'https://bailab.siais.shanghaitech.edu.cn/mai-targetfisher', suffix: '', title: '综合性靶标预测方法学', type: 'direct'}
         ]
         const proteinTools = [
-            {name: 'DenseCPD', logo: './logo/DenseCPD.png', prefix: 'http://protein.org.cn/densecpd.html', suffix: '', title: 'Fixed-Backbone Protein Sequence Design', type: 'direct'},
-            {name: 'FoldDesign', logo: './logo/FoldDesign.png', prefix: 'https://zhanggroup.org/FoldDesign/', suffix: '', title: 'Protein Backbone Design', type: 'direct'},
-            {name: 'EvoDesign', logo: './logo/EvoDesign.png', prefix: 'https://zhanggroup.org/EvoDesign/', suffix: '', title: 'Protein Sequence Design, Supports Monomer and Sequence Design', type: 'direct'},
+            {name: 'DenseCPD', logo: './logo/DenseCPD.png', prefix: 'http://protein.org.cn/densecpd.html', suffix: '', title: '蛋白质固定骨架的序列设计', type: 'direct'},
+            {name: 'FoldDesign', logo: './logo/FoldDesign.png', prefix: 'https://zhanggroup.org/FoldDesign/', suffix: '', title: '蛋白质骨架设计', type: 'direct'},
+            {name: 'EvoDesign', logo: './logo/EvoDesign.png', prefix: 'https://zhanggroup.org/EvoDesign/', suffix: '', title: '蛋白质序列设计,支持单体和序列设计', type: 'direct'},
         ];
 
         // Current language
@@ -584,6 +681,9 @@
             } else {
                 renderContent('default');
             }
+            
+            // 重新初始化tooltip
+            setTimeout(initTooltip, 100);
         }
 
         // Initialize the page
@@ -610,6 +710,9 @@
             // Language switch event listeners
             document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
             document.getElementById('lang-zh').addEventListener('click', () => switchLanguage('zh'));
+            
+            // 初始化tooltip
+            initTooltip();
         });
 
         // Function to render main content
@@ -679,6 +782,9 @@
                     contentContainer.appendChild(categoryDiv);
                 }
             });
+            
+            // 初始化新创建元素的tooltip
+            setTimeout(initTooltip, 100);
         }
 
         // Function to get categories by key
@@ -745,6 +851,9 @@
                 toolDiv.appendChild(toolName);
                 container.appendChild(toolDiv);
             });
+            
+            // 初始化新创建元素的tooltip
+            setTimeout(initTooltip, 100);
         }
 
         // Search function

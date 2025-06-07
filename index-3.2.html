@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioSearch Pro 3.0 - Biomedical Search Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #2c7a7b;
+            --secondary-color: #319795;
+            --accent-color: #e53e3e;
+            --light-bg: #f7fafc;
+            --dark-bg: #1a202c;
+        }
+        
+        * {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .search-input {
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+        }
+        
+        .tool-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 145px;
+            height: 60px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            overflow: hidden;
+            padding: 4px;
+        }
+        
+        .tool-img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            transition: transform 0.2s ease;
+        }
+        
+        .tool-img-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+        
+        .tool-img-container:hover .tool-img {
+            transform: scale(1.05);
+        }
+        
+        .special-chars {
+            background-color: #edf2f7;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        
+        .category-btn {
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-weight: 500;
+        }
+        
+        .category-btn.active {
+            background-color: var(--secondary-color) !important;
+            color: white !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        #contact {
+            transition: opacity 0.3s ease;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+        }
+        
+        .tool-name {
+            font-size: 1.05rem;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        
+        /* Language switcher */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .lang-btn {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2c7a7b',
+                        secondary: '#319795',
+                        accent: '#e53e3e',
+                        light: '#f7fafc',
+                        dark: '#1a202c'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen text-gray-800">
+    <!-- Language Switch -->
+    <div class="lang-switch">
+        <button id="lang-en" class="lang-btn">English</button>
+        <button id="lang-zh" class="lang-btn">中文</button>
+    </div>
+    
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-teal-700 to-teal-800 py-4 px-6 shadow-lg">
+        <div class="max-w-8xl mx-auto">
+            <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-white text-center">Biomedical Search & Tools Navigation</h1>
+            
+            <div class="flex flex-wrap justify-center gap-2 mt-3">
+                <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                    <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow" 
+                            onclick="window.location.href='./index-250607.html'">
+                        <span id="old-version">Old Version</span>
+                    </button>
+                    <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow" 
+                            onclick="window.location.href='./index.html'">
+                        <span id="new-version">New Version</span>
+                    </button>
+                    <button id="wechat-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow">
+                        <i class="fab fa-weixin mr-1"></i> 
+                        <span id="wechat-account">WeChat Account</span>
+                    </button>
+                    <button class="bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow" 
+                            onclick="openurl('mailto:Wanglin1102@outlook.com')">
+                        <i class="fas fa-envelope mr-1"></i> 
+                        <span id="feedback">Feedback</span>
+                    </button>
+                    <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow" 
+                            onclick="window.location.href='https://wang-lin-boop.github.io/WangLin/'">
+                        <i class="fas fa-user mr-1"></i> 
+                        <span id="about-author">About Author</span>
+                    </button>
+                    <button class="bg-teal-600 hover:bg-teal-500 text-white px-3 py-1.5 rounded-md text-sm transition-colors duration-200 shadow"> | </button>
+                </div>
+                <div class="mt-2 flex flex-wrap gap-2 justify-center">
+                    <button data-category="default" class="category-btn active bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-default">Protein Miner</span>
+                    </button>
+                    <button data-category="drug" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-drug">Drug Design</span>
+                    </button>
+                    <button data-category="metabolic" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-metabolic">Enzymes & Metabolism</span>
+                    </button>
+                    <button data-category="bioinfo" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-bioinfo">Bioinformatics</span>
+                    </button>
+                    <button data-category="biostru" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-biostru">Biological Structures</span>
+                    </button>
+                    <button data-category="experiment" class="category-btn bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1 rounded-md text-sm transition-all duration-200">
+                        <span id="category-experiment">Experimental Support</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="max-w-7xl mx-auto p-4 mt-6">
+        <div class="relative flex items-center">
+            <input type="text" id="textinput" placeholder="Enter keywords here, click icons below to search (or jump to specific tools)" 
+                   class="search-input w-full px-6 py-4 rounded-lg border-2 border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-300 shadow-sm">
+            <i class="fas fa-search absolute right-5 text-gray-500"></i>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-8xl mx-auto px-4 py-6">
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Left Column (11/14 width) -->
+            <div class="lg:w-11/14">
+                <div id="dynamic-content" class="space-y-8">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+            
+            <!-- Right Column (3/14 width) -->
+            <div class="lg:w-3/14 space-y-6">
+                <!-- Special Characters -->
+                <div class="sidebar-card">
+                    <h3 class="text-lg font-semibold mb-3 text-teal-800">
+                        <i class="fas fa-font mr-2"></i> 
+                        <span id="special-chars-title">Common Special Letters and Symbols</span>
+                    </h3>
+                    <div class="grid grid-cols-4 gap-2 text-center">
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">Å</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">Δ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ö</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ξ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">σ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ω</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ψ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ϕ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">ζ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">μ</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">①</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">②</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">③</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">±</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">☑</span>
+                        <span class="bg-gray-100 py-1.5 rounded text-sm shadow-sm">∞</span>
+                    </div>
+                </div>
+
+                <!-- Tools Section -->
+                <div class="sidebar-card">
+                    <h3 class="text-lg font-semibold mb-4 text-teal-800 flex items-center">
+                        <i class="fas fa-tools mr-2"></i> 
+                        <span id="docking-tools-title">Common Molecular Docking Tools</span>
+                    </h3>
+                    <div id="dock-tools" class="grid grid-cols-3 gap-4">
+                        <!-- Dock tools will be loaded from data -->
+                    </div>                    
+                    <h3 class="text-lg font-semibold mb-4 text-teal-800 flex items-center">
+                        <i class="fas fa-flask mr-2"></i> 
+                        <span id="modeling-tools-title">Biomolecular Modeling Tools</span>
+                    </h3>
+                    <div id="targetFishingTools" class="grid grid-cols-3 gap-4">
+                        <!-- Modeling tools will be loaded from data -->
+                    </div>
+                    <h3 class="text-lg font-semibold mb-4 text-teal-800 flex items-center">
+                        <i class="fas fa-flask mr-2"></i> 
+                        <span id="protein-tools-title">Protein Analysis & Design Tools</span>
+                    </h3>
+                    <div id="proteinTools" class="grid grid-cols-3 gap-4">
+                        <!-- Modeling tools will be loaded from data -->
+                    </div>
+                    <hr class="my-4 border-gray-200">
+                    <h3 class="text-lg font-semibold mb-3 text-teal-800">
+                        <i class="fas fa-wrench mr-2"></i> 
+                        <span id="custom-tools-title">Practical Custom Tools</span>
+                    </h3>
+                    <button onclick="search('https://www.bindingdb.org/bind/chemsearch/marvin/MolStructure.jsp?monomerid=','')" 
+                            class="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white py-2 rounded-lg transition-all shadow-md flex items-center justify-center">
+                        <i class="fas fa-database mr-2"></i> BindingDB Monomer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Wechat Popup -->
+    <div id="contact" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-2xl w-11/12 max-w-xl z-50 hidden shadow-2xl">
+        <div class="text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-3" id="contact-title">Our WeChat Official Account</h3>
+            <p class="text-gray-600 mb-4" id="contact-description">Reply "Join Group" after following to get the community QR code</p>
+            <div class="border-4 border-teal-500 p-1 inline-block rounded-xl">
+                <img src="fig/protein.png" alt="WeChat Official Account" class="w-200 h-50 object-contain">
+            </div>
+            <button onclick="closeContact()" class="mt-6 px-6 py-2.5 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors font-medium shadow">
+                <span id="close-btn">Close</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Overlay for popup -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <script>
+        // Translation dictionary
+        const translations = {
+            'zh': {
+                'main-title': '生物医学搜索与工具导航',
+                'old-version': '旧版本',
+                'new-version': '新版本',
+                'wechat-account': '公众号',
+                'feedback': '意见箱',
+                'about-author': '关于作者',
+                'category-default': '蛋白矿工',
+                'category-drug': '药物设计',
+                'category-metabolic': '酶与代谢',
+                'category-bioinfo': '生物信息',
+                'category-biostru': '生物结构',
+                'category-experiment': '实验辅助',
+                'search-placeholder': '在此输入英文关键词，点击下方图标搜索 (或跳转到指定工具)',
+                'special-chars-title': '常用特殊字母与符号',
+                'docking-tools-title': '常用分子对接工具',
+                'modeling-tools-title': '生物分子建模工具',
+                'protein-tools-title': '蛋白质分析和设计工具',
+                'custom-tools-title': '实用定制工具',
+                'contact-title': '我们的公众号，欢迎关注！',
+                'contact-description': '关注后回复"加群"可以获取社区二维码',
+                'close-btn': '关闭',
+                'publication': {
+                    'title': '学术出版物、资源与学术名词查询, 以及配色参考',
+
+                },
+                'protein': {
+                    'title': '蛋白互作，表达，修饰以及蛋白质家族数据库'
+                },
+                'drug': {
+                    'title': '药物设计数据库及在线工具'
+                },
+                'metabolic': {
+                    'title': '酶与代谢数据库及在线工具'
+                },
+                'biostru': {
+                    'title': '生物结构数据库、建模与预测工具'
+                },
+                'bioinfo': {
+                    'title': '生物信息学工具与资源'
+                },
+                'experiment': {
+                    'title': '湿实验所用辅助在线工具'
+                }
+            },
+            'en': {
+                'main-title': 'Biomedical Search & Tools Navigation',
+                'old-version': 'Old Version',
+                'new-version': 'New Version',
+                'wechat-account': 'WeChat Account',
+                'feedback': 'Feedback',
+                'about-author': 'About Author',
+                'category-default': 'Protein Miner',
+                'category-drug': 'Drug Design',
+                'category-metabolic': 'Enzymes & Metabolism',
+                'category-bioinfo': 'Bioinformatics',
+                'category-biostru': 'Biological Structures',
+                'category-experiment': 'Experimental Support',
+                'search-placeholder': 'Enter keywords here, click icons below to search (or jump to specific tools)',
+                'special-chars-title': 'Common Special Letters and Symbols',
+                'docking-tools-title': 'Common Molecular Docking Tools',
+                'modeling-tools-title': 'Biomolecular Modeling Tools',
+                'protein-tools-title': 'Protein Analysis & Design Tools',
+                'custom-tools-title': 'Practical Custom Tools',
+                'contact-title': 'Our WeChat Official Account',
+                'contact-description': 'Reply "Join Group" after following to get the community QR code',
+                'close-btn': 'Close',
+                'publication': {
+                    'title': 'Academic Publications, Resources, Terminology Search and Color References'
+                },
+                'protein': {
+                    'title': 'Protein Interactions, Expression, Modifications and Protein Family Databases'
+                },
+                'drug': {
+                    'title': 'Drug Design Databases and Online Tools'
+                },
+                'metabolic': {
+                    'title': 'Enzyme and Metabolic Databases and Online Tools'
+                },
+                'biostru': {
+                    'title': 'Biological Structure Databases, Modeling and Prediction Tools'
+                },
+                'bioinfo': {
+                    'title': 'Bioinformatics Tools and Resources'
+                },
+                'experiment': {
+                    'title': 'Wet Lab Support Online Tools'
+                }
+            }
+        };
+
+        // Centralized data structure with English titles
+        const bioDatabase = {
+            categories: {
+                publication: {
+                    id: 'publication',
+                    title: '学术出版物、资源与学术名词查询, 以及配色参考',
+                    tools: [
+                        {name: 'Pubmed', logo: './logo/Pubmed.png', prefix: 'https://www.ncbi.nlm.nih.gov/pubmed/?term=', suffix: '', title: 'NCBI文献数据库', type: 'search'},
+                        {name: 'Wikipedia', logo: './logo/Wikipedia.png', prefix: 'https://en.wikipedia.org/wiki/', suffix: '', title: '维基百科，可以查阅名词', type: 'search'},
+                        {name: 'Google Scholar', logo: './logo/Google.png', prefix: 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=', suffix: '&btnG=', title: '谷歌学术', type: 'search'},
+                        {name: 'GreenMedical', logo: './logo/GreenMedical.png', prefix: 'https://www.geenmedical.com/search?query=%7B%22keyword%22:%22', suffix: '%22%7D', title: '生物医药文献调研工具套件', type: 'search'},
+                        {name: 'Gen-lib', logo: './logo/Gen-lib.png', prefix: 'http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=', suffix: '', title: '专业专著电子书网站', type: 'search'},
+                        {name: 'OBRC', logo: './logo/OBRC.png', prefix: 'http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=', suffix: '&v%3Aproject=obrc&submit=Search', title: '生物信息学资源整理', type: 'search'},
+                        {name: 'BioRxiv', logo: './logo/BioRxiv.png', prefix: 'https://www.biorxiv.org/search/', suffix: '', title: '生物医学预印本网站', type: 'search'}
+                    ]
+                },
+                protein: {
+                    id: 'protein',
+                    title: '蛋白互作，表达，修饰以及蛋白质家族数据库',
+                    tools: [
+                        {name: 'Uniprot', logo: './logo/Uniprot.jpg', prefix: 'https://www.uniprot.org/uniprotkb?query=', suffix: '', title: '蛋白质数据库', type: 'search'},
+                        {name: 'GeneCards', logo: './logo/GeneCards.png', prefix: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene=', suffix: '', title: '基因数据库', type: 'search'},
+                        {name: 'PDB', logo: './logo/PDB.png', prefix: 'http://www.rcsb.org/search?query=%7B%22parameters%22%3A%7B%22value%22%3A%22', suffix: '%22%7D%7D', title: '蛋白质结构数据库', type: 'search'},
+                        {name: 'Inact', logo: './logo/Inact.png', prefix: 'https://www.ebi.ac.uk/intact/interactions?conversationContext=', suffix: '', title: '蛋白相互作用数据库', type: 'search'},
+                        {name: 'Pfam', logo: './logo/Pfam.png', prefix: 'http://pfam.xfam.org/search/keyword?query=', suffix: '', title: '蛋白质家族信息数据库', type: 'search'},
+                        {name: 'InterPro', logo: './logo/InterPro.png', prefix: 'http://www.ebi.ac.uk/interpro/search/text/', suffix: '/?page=1#table', title: '蛋白质Domain信息数据库', type: 'search'},
+                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: '信号肽及亚细胞定位预测', type: 'search'},
+                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: '蛋白质磷酸化位点预测', type: 'direct'},
+                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: '蛋白质PTM&分选等位点预测', type: 'direct'},
+                        {name: 'Ensembi', logo: './logo/Ensembi.png', prefix: 'http://asia.ensembl.org/Multi/Search/Results?q=', suffix: ';site=ensembl_all', title: '动物基因组数据库', type: 'search'},
+                        {name: 'ProteinAtlas', logo: './logo/proteinatlas.png', prefix: 'https://www.proteinatlas.org/search/', suffix: '', title: '多维度基因表达数据', type: 'search'},
+                        {name: 'GTEx', logo: './logo/GTEx.png', prefix: 'https://www.gtexportal.org/home/gene/', suffix: '', title: '综合型基因表达数据库', type: 'search'}
+                    ]
+                },
+                drug: {
+                    id: 'drug',
+                    title: '药物设计数据库及在线工具',
+                    tools: [
+                        {name: 'ChemBL', logo: './logo/ChemBL.png', prefix: 'https://www.ebi.ac.uk/chembl/g/#search_results/all/query=', suffix: '', title: '生物活性数据库', type: 'search'},
+                        {name: 'PubChem', logo: './logo/PubChem.png', prefix: 'https://pubchem.ncbi.nlm.nih.gov/#query=', suffix: '', title: '化合物数据库', type: 'search'},
+                        {name: 'DrugBank', logo: './logo/DrugBank.png', prefix: 'https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=drugs', title: '药物信息数据库', type: 'search'},
+                        {name: 'BindingDB', logo: './logo/BindingDB.png', prefix: 'https://www.bindingdb.org/bind/tabLuceneResult.jsp?thisInput=', suffix: '&submit=Go', title: '生物分子结合数据库', type: 'search'},
+                        {name: 'IUPHAR', logo: './logo/IUPHAR.png', prefix: 'https://www.guidetopharmacology.org/GRAC/DatabaseSearchForward?searchString=', suffix: '&searchCategories=all&species=none&type=all&comments=includeComments&order=rank&submit=Search+Database', title: '药理学数据库', type: 'search'},
+                        {name: 'RPBS', logo: './logo/RPBS.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#welcome', suffix: '', title: '综合药物设计辅助分析网站', type: 'direct'},
+                        {name: 'CavityPlus', logo: './logo/CavityPlus.png', prefix: 'http://www.pkumdl.cn:8000/cavityplus/computation.php', suffix: '', title: '蛋白结构口袋分析工具', type: 'direct'},
+                        {name: 'SwissADME', logo: './logo/SwissADME.png', prefix: 'http://www.swissadme.ch/', suffix: '', title: '小分子ADME性质预测', type: 'direct'},
+                        {name: 'ADMETlab', logo: './logo/ADMETlab.png', prefix: 'http://admet.scbdd.com/home/index/', suffix: '', title: '小分子药物化学性质预测', type: 'direct'},
+                        {name: 'ChemSAR', logo: './logo/ChemSAR.png', prefix: 'http://chemsar.scbdd.com/home/index/', suffix: '', title: '配体基础的药物筛选', type: 'direct'},
+                        {name: 'DeepScreening', logo: './logo/DeepScreening.png', prefix: 'http://deepscreening.xielab.net/screening', suffix: '', title: '深度学习基础的化合物SAR筛选', type: 'direct'}
+
+                    ]
+                },
+                metabolic: {
+                    id: 'metabolic',
+                    title: '酶与代谢数据库及在线工具',
+                    tools: [
+                        {name: 'Reactome', logo: './logo/Reactome.png', prefix: 'https://reactome.org/content/query?q=', suffix: '&species=Homo+sapiens&species=Entries+without+species&cluster=true', title: '代谢与信号通路数据库', type: 'search'},
+                        {name: 'BRENDA', logo: './logo/BRENDA.png', prefix: 'https://www.brenda-enzymes.org/fulltext.php?Searchterm=', suffix: '', title: '酶反应数据库', type: 'search'},
+                        {name: 'HMDB', logo: './logo/HMDB.png', prefix: 'https://hmdb.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=metabolites&button=', title: '人类代谢数据库', type: 'search'},
+                        {name: 'KEGG', logo: './logo/KEGG.png', prefix: 'https://www.genome.jp/dbget-bin/www_bfind_sub?mode=bfind&max_hit=1000&dbkey=alldb&keywords=', suffix: '', title: '代谢通路数据库', type: 'search'},
+                        {name: 'RAST', logo: './logo/RAST.png', prefix: 'https://rast.nmpdr.org/', suffix: '', title: '细菌基因组注释工具', type: 'direct'},
+                        {name: 'GeneSet', logo: './logo/GeneSet.png', prefix: 'http://www.webgestalt.org/', suffix: '', title: '通路富集分析', type: 'direct'},
+                        {name: 'SMASH', logo: './logo/SMASH.png', prefix: 'https://fungismash.secondarymetabolites.org/#!/start', suffix: '', title: '基因组次生代谢通路注释', type: 'direct'},
+                        {name: 'JGI', logo: './logo/JGI.png', prefix: 'https://img.jgi.doe.gov/cgi-bin/pub/main.cgi?section=FindGenes&page=findGenes', suffix: '', title: '上下游基因查找', type: 'direct'},
+                        {name: 'Metacyc', logo: './logo/Metacyc.png', prefix: 'https://metacyc.org/', suffix: '', title: '生物代谢精制数据库', type: 'direct'}
+                    ]
+                },
+                biostru: {
+                    id: 'biostru',
+                    title: '生物结构数据库、建模与预测工具',
+                    tools: [
+                        {name: 'OPM', logo: 'logo/OPM.png', prefix: 'https://opm.phar.umich.edu/proteins?search=', suffix: '', title: '膜蛋白结构数据库', type: 'search'},
+                        {name: 'AlphaFoldDB', logo: 'logo/AF2.png', prefix: 'https://alphafold.ebi.ac.uk/search/text/', suffix: '', title: '强大的蛋白质结构预测工具AlphaFold2所预测的蛋白质的数据库', type: 'search'},
+                        {name: '3DBeacons', logo: 'logo/3DBeacons.png', prefix: 'https://www.ebi.ac.uk/pdbe/pdbe-kb/3dbeacons/search/', suffix: '', title: '综合实验结构、预测结构、动态结构的蛋白结构数据库', type: 'search'},
+                        {name: 'DSSP', logo: './logo/DSSP.png', prefix: 'https://mrs.cmbi.umcn.nl/entry?db=dssp&nr=94883&rq=', suffix: '', title: 'PDB对应的DSSP信息查询', type: 'search'},
+                        {name: 'I-TASSER', logo: './logo/I-TASSER.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/I-TASSER/', suffix: '', title: '同源建模工具', type: 'direct'},
+                        {name: 'QUARK', logo: './logo/QUARK.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/QUARK/', suffix: '', title: '蛋白质折叠预测', type: 'direct'},
+                        {name: 'Robetta', logo: './logo/Robetta.png', prefix: 'http://new.robetta.org/submit.php', suffix: '', title: '整合蛋白质预测方法', type: 'direct'},
+                        {name: 'Swiss Model', logo: './logo/Swiss.png', prefix: 'https://swissmodel.expasy.org/interactive/', suffix: '', title: '简单同源建模', type: 'direct'},
+                        {name: 'RNAFold', logo: './logo/RNAFold.png', prefix: 'http://rna.tbi.univie.ac.at/cgi-bin/RNAWebSuite/RNAfold.cgi', suffix: '', title: 'RNA二级结构预测', type: 'direct'},
+                        {name: '3D RNA', logo: './logo/3DRNA.png', prefix: 'http://biophy.hust.edu.cn/new/3dRNA/create', suffix: '', title: 'RNA三级结构预测', type: 'direct'},
+                        {name: 'AWSEM', logo: './logo/AWSEM.png', prefix: 'https://awsem.rice.edu/', suffix: '', title: '粗粒度模拟的蛋白质折叠', type: 'direct'},
+                        {name: 'PEPFold', logo: './logo/PEPFold.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3', suffix: '', title: '多肽折叠预测及对接', type: 'direct'},
+                    ]
+                },
+                bioinfo: {
+                    id: 'bioinfo',
+                    title: '生物信息学工具与资源',
+                    tools: [
+                        {name: 'Map', logo: './logo/Map.png', prefix: 'https://www.uniprot.org/uploadlists/', suffix: '', title: '不同数据库间条目Map工具', type: 'direct'},
+                        {name: 'BLAST', logo: './logo/BLAST.png', prefix: 'https://blast.ncbi.nlm.nih.gov/Blast.cgi', suffix: '', title: '序列比对软件', type: 'direct'},
+                        {name: 'String', logo: './logo/String.png', prefix: 'https://string-db.org/cgi/network.pl', suffix: '', title: '蛋白质互作分析数据库', type: 'direct'},
+                        {name: 'CDHIT', logo: './logo/CDHIT.png', prefix: 'http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi', suffix: '', title: '生物序列聚类分析', type: 'direct'},
+                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: '信号肽及亚细胞定位预测', type: 'search'},
+                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: '蛋白质磷酸化位点预测', type: 'direct'},
+                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: '蛋白质PTM&分选等位点预测', type: 'direct'},
+                        {name: 'GPS', logo: './logo/GPS.png', prefix: 'https://sumo.biocuckoo.cn/index.php', suffix: '', title: '蛋白质修饰预测', type: 'direct'},
+                        {name: 'HMMER', logo: './logo/HMMER.png', prefix: 'https://www.ebi.ac.uk/Tools/hmmer/search/phmmer', suffix: '', title: '蛋白质序列搜库', type: 'direct'},
+                        {name: 'DALI', logo: './logo/DALI.png', prefix: 'http://ekhidna2.biocenter.helsinki.fi/dali/', suffix: '', title: '蛋白质结构搜库', type: 'direct'},
+                        {name: 'MAFFT', logo: './logo/MAFFT.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/mafft/', suffix: '', title: '多序列比对软件', type: 'direct'},
+                        {name: 'MUSCLE', logo: './logo/MUSCLE.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/muscle/', suffix: '', title: '高质量蛋白质序列比对', type: 'direct'},
+                        {name: 'ESPript', logo: './logo/ESPript.png', prefix: 'http://espript.ibcp.fr/ESPript/cgi-bin/ESPript.cgi', suffix: '', title: '多序列比对作图工具', type: 'direct'},
+                        {name: 'Color', logo: './logo/Color.png', prefix: 'https://www.cgl.ucsf.edu/chimerax/docs/user/commands/colornames.html', suffix: '', title: 'Chimera颜色板', type: 'direct'},
+                        {name: 'Weblogo', logo: './logo/Weblogo.png', prefix: 'http://weblogo.threeplusone.com/create.cgi', suffix: '', title: '序列保守性可视化', type: 'direct'},
+                        {name: 'ISO', logo: './logo/ISO.png', prefix: 'http://wiki.tgilab.org/ISOexpresso/', suffix: '', title: '差异基因表达分析工具', type: 'direct'},
+                        {name: 'TCGA', logo: './logo/TCGA.png', prefix: 'https://portal.gdc.cancer.gov/', suffix: '', title: 'TCGA综合癌症数据集', type: 'direct'},
+                        {name: 'cBioPortal', logo: './logo/cBioPortal.png', prefix: 'https://www.cbioportal.org/', suffix: '', title: 'TCGA数据集分析工具', type: 'direct'},
+                        {name: 'GEPIA', logo: './logo/GEPIA.png', prefix: 'http://gepia.cancer-pku.cn/', suffix: '', title: '癌症基因表达分析工具', type: 'direct'},
+                        {name: 'LINCS', logo: './logo/LINCS.png', prefix: 'http://lincsportal.ccs.miami.edu/dcic-portal/', suffix: '', title: '多维基因表达数据集', type: 'direct'},
+                    ]
+                },
+                experiment: {
+                    id: 'experiment',
+                    title: '湿实验所用辅助在线工具',
+                    tools: [
+                        {name: 'sgRNA', logo: './logo/sgRNA.png', prefix: 'https://zlab.bio/guide-design-resources', suffix: '', title: 'sgRNA设计工具', type: 'direct'},
+                        {name: 'HHpred', logo: './logo/HHpred.png', prefix: 'https://toolkit.tuebingen.mpg.de/tools/hhpred', suffix: '', title: 'PDB建模模板查找、可用于搜索相似蛋白查找结晶条件', type: 'direct'},
+                        {name: 'PeptideCutter', logo: './logo/PeptideCutter.png', prefix: 'https://web.expasy.org/peptide_cutter/', suffix: '', title: '蛋白质酶切位点预测', type: 'direct'},
+                        {name: 'ProtParam', logo: './logo/ProtParam.png', prefix: 'https://web.expasy.org/protparam/', suffix: '', title: '蛋白质基本性质预测', type: 'direct'},
+                        {name: 'ProteInfer', logo: './logo/ProteInfer.png', prefix: 'https://google-research.github.io/proteinfer/', suffix: '', title: '蛋白质功能预测', type: 'direct'},
+                        {name: 'KASS', logo: './logo/KASS.png', prefix: 'https://www.genome.jp/tools/kaas/', suffix: '', title: '基因组注释工具', type: 'direct'},
+                    ]
+                }
+            },
+        }
+        const dockTools = [
+            {name: 'ZDock', logo: './logo/ZDock.png', prefix: 'http://zdock.umassmed.edu/', suffix: '', title: 'Protein-Protein Rigid Docking', type: 'direct'},
+            {name: 'ClusPro', logo: './logo/ClusPro.png', prefix: 'https://cluspro.bu.edu/login.php', suffix: '', title: 'Protein Docking Optimization', type: 'direct'},
+            {name: 'HADDock', logo: './logo/HADDock2.4.png', prefix: 'https://bianca.science.uu.nl/haddock2.4/submit/1', suffix: '', title: 'Protein-Protein Docking', type: 'direct'},
+            {name: 'CABS Dock', logo: './logo/CABS.png', prefix: 'http://biocomp.chem.uw.edu.pl/CABSdock/', suffix: '', title: 'Protein-Peptide Recognition', type: 'direct'},
+            {name: 'HPEPDOCK', logo: './logo/HPEPDOCK.png', prefix: 'http://huanglab.phys.hust.edu.cn/hpepdock/', suffix: '', title: 'Fast Protein-Peptide Docking', type: 'direct'},
+            {name: 'FlexPep', logo: './logo/FlexPep.png', prefix: 'http://flexpepdock.furmanlab.cs.huji.ac.il/', suffix: '', title: 'Flexible Protein-Peptide Docking', type: 'direct'}
+        ]
+        const targetFishingTools = [
+            {name: 'SEA', logo: './logo/SEA.png', prefix: 'https://sea.bkslab.org/', suffix: '', title: '2D Structure-Based Target Fishing', type: 'direct'},
+            {name: 'ChemMapper', logo: './logo/CM.png', prefix: 'http://lilab-ecust.cn/chemmapper/', suffix: '', title: 'Small Molecule Shape Similarity-Based Target Fishing', type: 'direct'},
+            {name: 'TargetFisher', logo: './logo/MAI-TargetFisher.png', prefix: 'https://bailab.siais.shanghaitech.edu.cn/mai-targetfisher', suffix: '', title: 'Comprehensive Target Prediction Methodology', type: 'direct'}
+        ]
+        const proteinTools = [
+            {name: 'DenseCPD', logo: './logo/DenseCPD.png', prefix: 'http://protein.org.cn/densecpd.html', suffix: '', title: 'Fixed-Backbone Protein Sequence Design', type: 'direct'},
+            {name: 'FoldDesign', logo: './logo/FoldDesign.png', prefix: 'https://zhanggroup.org/FoldDesign/', suffix: '', title: 'Protein Backbone Design', type: 'direct'},
+            {name: 'EvoDesign', logo: './logo/EvoDesign.png', prefix: 'https://zhanggroup.org/EvoDesign/', suffix: '', title: 'Protein Sequence Design, Supports Monomer and Sequence Design', type: 'direct'},
+        ];
+
+        // Current language
+        let currentLang = 'zh';
+
+        // Function to switch language
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const langDict = translations[lang];
+            
+            // Update all elements with translations
+            Object.keys(langDict).forEach(key => {
+                if (typeof langDict[key] === 'string') {
+                    const element = document.getElementById(key);
+                    if (element) element.textContent = langDict[key];
+                }
+            });
+            
+            // Update search placeholder
+            document.getElementById('textinput').placeholder = langDict['search-placeholder'];
+            
+            // Re-render content with new titles
+            renderContent('default');
+
+            const activeBtn = document.querySelector('[data-category].active');
+            if (activeBtn) {
+                renderContent(activeBtn.dataset.category);
+            } else {
+                renderContent('default');
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set English as default language
+            switchLanguage('zh');
+
+            // Render initial content
+            renderContent('default');
+            renderDockTools();
+            renderModelingTools();
+            renderProteinTools();
+            setupEventListeners();
+            
+            // Set default category as active
+            const defaultBtn = document.querySelector('[data-category="default"]');
+
+            if (defaultBtn) {
+                document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+                defaultBtn.classList.add('active');
+                renderContent(defaultBtn.dataset.category);
+            }
+
+            // Language switch event listeners
+            document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+            document.getElementById('lang-zh').addEventListener('click', () => switchLanguage('zh'));
+        });
+
+        // Function to render main content
+        function renderContent(categoryKey) {
+            const contentContainer = document.getElementById('dynamic-content');
+            
+            // Clear existing content
+            contentContainer.innerHTML = '';
+            
+            // Get the categories based on what we want to show
+            const categoriesToShow = getCategoriesByKey(categoryKey);
+            
+            // Render each category
+            categoriesToShow.forEach(catId => {
+                const category = bioDatabase.categories[catId];
+                if (category) {
+                    const categoryDiv = document.createElement('div');
+                    categoryDiv.className = 'content-card p-6';
+                    
+                    // Category title
+                    const title = document.createElement('h3');
+                    title.className = 'text-xl font-bold text-teal-800 mb-5 flex items-center';
+                    const categoryTitle = translations[currentLang][category.id]?.title || category.title;
+                    title.innerHTML = `<i class="fas fa-database mr-3"></i> ${categoryTitle}`;
+                    
+                    // Tools container
+                    const toolsContainer = document.createElement('div');
+                    toolsContainer.className = 'grid grid-cols-13 sm:grid-cols-13 md:grid-cols-13 lg:grid-cols-12 gap-4';
+                    
+                    // Add tools
+                    category.tools.forEach(tool => {
+                        const toolDiv = document.createElement('div');
+                        toolDiv.className = 'flex flex-col items-center';
+                        
+                        const toolImgContainer = document.createElement('div');
+                        toolImgContainer.className = 'tool-img-container';
+                        
+                        const toolImg = document.createElement('img');
+                        toolImg.src = tool.logo;
+                        toolImg.alt = tool.name;
+                        toolImg.title = tool.title;
+                        toolImg.className = 'tool-img';
+                        
+                        toolImgContainer.onclick = function() {
+                            if (tool.type === 'search') {
+                                const searchTerm = document.getElementById('textinput').value;
+                                window.open(tool.prefix + searchTerm + tool.suffix);
+                            } else {
+                                window.open(tool.prefix);
+                            }
+                        };
+                        
+                        toolImgContainer.appendChild(toolImg);
+                        
+                        const toolName = document.createElement('span');
+                        toolName.className = 'tool-name';
+                        toolName.textContent = tool.name;
+                        
+                        toolDiv.appendChild(toolImgContainer);
+                        toolDiv.appendChild(toolName);
+                        toolsContainer.appendChild(toolDiv);
+                    });
+                    
+                    categoryDiv.appendChild(title);
+                    categoryDiv.appendChild(toolsContainer);
+                    
+                    contentContainer.appendChild(categoryDiv);
+                }
+            });
+        }
+
+        // Function to get categories by key
+        function getCategoriesByKey(key) {
+            const categoryMap = {
+                publication: ['publication'],
+                drug: ['protein', 'drug', 'publication'],
+                metabolic: ['metabolic', 'protein', 'publication'],
+                bioinfo: ['protein', 'bioinfo', 'publication'],
+                biostru: ['protein', 'biostru', 'publication'],
+                experiment: ['protein', 'bioinfo', 'experiment', 'publication'],
+                default: ['protein', 'drug', 'bioinfo', 'biostru']
+            };
+            
+            return categoryMap[key] || categoryMap.default;
+        }
+
+        // Function to render dock tools
+        function renderDockTools() {
+            const container = document.getElementById('dock-tools');
+            renderTools(dockTools, container);
+        }
+
+        // Function to render targetFishingTools
+        function renderModelingTools() {
+            const container = document.getElementById('targetFishingTools');
+            renderTools(targetFishingTools, container);
+        }
+
+        // Function to render protein tools
+        function renderProteinTools() {
+            const container = document.getElementById('proteinTools');
+            renderTools(proteinTools, container);
+        }
+
+        // Generic tool rendering function
+        function renderTools(tools, container) {
+            container.innerHTML = '';
+            
+            tools.forEach(tool => {
+                const toolDiv = document.createElement('div');
+                toolDiv.className = 'flex flex-col items-center';
+                
+                const toolImgContainer = document.createElement('div');
+                toolImgContainer.className = 'tool-img-container';
+                
+                const toolImg = document.createElement('img');
+                toolImg.src = tool.logo;
+                toolImg.alt = tool.name;
+                toolImg.title = tool.title;
+                toolImg.className = 'tool-img';
+                
+                toolImgContainer.onclick = function() {
+                    window.open(tool.prefix);
+                };
+                
+                toolImgContainer.appendChild(toolImg);
+                
+                const toolName = document.createElement('span');
+                toolName.className = 'tool-name';
+                toolName.textContent = tool.name;
+                
+                toolDiv.appendChild(toolImgContainer);
+                toolDiv.appendChild(toolName);
+                container.appendChild(toolDiv);
+            });
+        }
+
+        // Search function
+        function search(prefix, postfix) {
+            const searchTerm = document.getElementById('textinput').value;
+            window.open(prefix + searchTerm + postfix);
+        }
+
+        // URL opening function
+        function openurl(url) {
+            window.open(url);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Category buttons
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Render content for this category
+                    const categoryKey = this.dataset.category;
+                    renderContent(categoryKey);
+                });
+            });
+            
+            // WeChat button
+            document.getElementById('wechat-btn').addEventListener('click', function() {
+                document.getElementById('overlay').classList.remove('hidden');
+                document.getElementById('contact').classList.remove('hidden');
+            });
+            
+            // Close contact popup
+            document.getElementById('overlay').addEventListener('click', closeContact);
+        }
+
+        // Close contact popup
+        function closeContact() {
+            document.getElementById('overlay').classList.add('hidden');
+            document.getElementById('contact').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
