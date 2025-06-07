@@ -656,6 +656,14 @@
         // Current language
         let currentLang = 'zh';
 
+        // Function to resize the page
+        window.addEventListener('resize', resize);
+        function resize() {
+            var s;
+            s = window.screen.width / 2500;
+            document.body.style.zoom = s;
+        }
+
         // Function to switch language
         function switchLanguage(lang) {
             currentLang = lang;
@@ -711,6 +719,9 @@
             document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
             document.getElementById('lang-zh').addEventListener('click', () => switchLanguage('zh'));
             
+            // Resize the page initially
+            resize();
+
             // 初始化tooltip
             initTooltip();
         });
