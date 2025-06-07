@@ -344,7 +344,8 @@
                 'contact-description': '关注后回复"加群"可以获取社区二维码',
                 'close-btn': '关闭',
                 'publication': {
-                    'title': '学术出版物、资源与学术名词查询, 以及配色参考'
+                    'title': '学术出版物、资源与学术名词查询, 以及配色参考',
+
                 },
                 'protein': {
                     'title': '蛋白互作，表达，修饰以及蛋白质家族数据库'
@@ -416,122 +417,122 @@
             categories: {
                 publication: {
                     id: 'publication',
-                    title: 'Academic Publications, Resources, Terminology Search and Color References',
+                    title: '学术出版物、资源与学术名词查询, 以及配色参考',
                     tools: [
-                        {name: 'Pubmed', logo: './logo/Pubmed.png', prefix: 'https://www.ncbi.nlm.nih.gov/pubmed/?term=', suffix: '', title: 'NCBI Literature Database', type: 'search'},
-                        {name: 'Wikipedia', logo: './logo/Wikipedia.png', prefix: 'https://en.wikipedia.org/wiki/', suffix: '', title: 'Wikipedia, for terminology lookup', type: 'search'},
-                        {name: 'Google Scholar', logo: './logo/Google.png', prefix: 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=', suffix: '&btnG=', title: 'Google Scholar', type: 'search'},
-                        {name: 'GreenMedical', logo: './logo/GreenMedical.png', prefix: 'https://www.geenmedical.com/search?query=%7B%22keyword%22:%22', suffix: '%22%7D', title: 'Biomedical Literature Research Tool Suite', type: 'search'},
-                        {name: 'Gen-lib', logo: './logo/Gen-lib.png', prefix: 'http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=', suffix: '', title: 'Professional eBook Website', type: 'search'},
-                        {name: 'OBRC', logo: './logo/OBRC.png', prefix: 'http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=', suffix: '&v%3Aproject=obrc&submit=Search', title: 'Bioinformatics Resource Collection', type: 'search'},
-                        {name: 'BioRxiv', logo: './logo/BioRxiv.png', prefix: 'https://www.biorxiv.org/search/', suffix: '', title: 'Biomedical Preprint Website', type: 'search'}
+                        {name: 'Pubmed', logo: './logo/Pubmed.png', prefix: 'https://www.ncbi.nlm.nih.gov/pubmed/?term=', suffix: '', title: 'NCBI文献数据库', type: 'search'},
+                        {name: 'Wikipedia', logo: './logo/Wikipedia.png', prefix: 'https://en.wikipedia.org/wiki/', suffix: '', title: '维基百科，可以查阅名词', type: 'search'},
+                        {name: 'Google Scholar', logo: './logo/Google.png', prefix: 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=', suffix: '&btnG=', title: '谷歌学术', type: 'search'},
+                        {name: 'GreenMedical', logo: './logo/GreenMedical.png', prefix: 'https://www.geenmedical.com/search?query=%7B%22keyword%22:%22', suffix: '%22%7D', title: '生物医药文献调研工具套件', type: 'search'},
+                        {name: 'Gen-lib', logo: './logo/Gen-lib.png', prefix: 'http://gen.lib.rus.ec/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=', suffix: '', title: '专业专著电子书网站', type: 'search'},
+                        {name: 'OBRC', logo: './logo/OBRC.png', prefix: 'http://search.hsls.pitt.edu/vivisimo/cgi-bin/query-meta?query=', suffix: '&v%3Aproject=obrc&submit=Search', title: '生物信息学资源整理', type: 'search'},
+                        {name: 'BioRxiv', logo: './logo/BioRxiv.png', prefix: 'https://www.biorxiv.org/search/', suffix: '', title: '生物医学预印本网站', type: 'search'}
                     ]
                 },
                 protein: {
                     id: 'protein',
-                    title: 'Protein Interactions, Expression, Modifications and Protein Family Databases',
+                    title: '蛋白互作，表达，修饰以及蛋白质家族数据库',
                     tools: [
-                        {name: 'Uniprot', logo: './logo/Uniprot.jpg', prefix: 'https://www.uniprot.org/uniprotkb?query=', suffix: '', title: 'Protein Database', type: 'search'},
-                        {name: 'GeneCards', logo: './logo/GeneCards.png', prefix: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene=', suffix: '', title: 'Gene Database', type: 'search'},
-                        {name: 'PDB', logo: './logo/PDB.png', prefix: 'http://www.rcsb.org/search?query=%7B%22parameters%22%3A%7B%22value%22%3A%22', suffix: '%22%7D%7D', title: 'Protein Structure Database', type: 'search'},
-                        {name: 'Inact', logo: './logo/Inact.png', prefix: 'https://www.ebi.ac.uk/intact/interactions?conversationContext=', suffix: '', title: 'Protein Interaction Database', type: 'search'},
-                        {name: 'Pfam', logo: './logo/Pfam.png', prefix: 'http://pfam.xfam.org/search/keyword?query=', suffix: '', title: 'Protein Family Information Database', type: 'search'},
-                        {name: 'InterPro', logo: './logo/InterPro.png', prefix: 'http://www.ebi.ac.uk/interpro/search/text/', suffix: '/?page=1#table', title: 'Protein Domain Information Database', type: 'search'},
-                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: 'Signal Peptide and Subcellular Localization Prediction', type: 'search'},
-                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: 'Protein Phosphorylation Site Prediction', type: 'direct'},
-                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: 'Protein PTM & Sorting Site Prediction', type: 'direct'},
-                        {name: 'Ensembi', logo: './logo/Ensembi.png', prefix: 'http://asia.ensembl.org/Multi/Search/Results?q=', suffix: ';site=ensembl_all', title: 'Animal Genome Database', type: 'search'},
-                        {name: 'ProteinAtlas', logo: './logo/proteinatlas.png', prefix: 'https://www.proteinatlas.org/search/', suffix: '', title: 'Multi-dimensional Gene Expression Data', type: 'search'},
-                        {name: 'GTEx', logo: './logo/GTEx.png', prefix: 'https://www.gtexportal.org/home/gene/', suffix: '', title: 'Comprehensive Gene Expression Database', type: 'search'}
+                        {name: 'Uniprot', logo: './logo/Uniprot.jpg', prefix: 'https://www.uniprot.org/uniprotkb?query=', suffix: '', title: '蛋白质数据库', type: 'search'},
+                        {name: 'GeneCards', logo: './logo/GeneCards.png', prefix: 'https://www.genecards.org/cgi-bin/carddisp.pl?gene=', suffix: '', title: '基因数据库', type: 'search'},
+                        {name: 'PDB', logo: './logo/PDB.png', prefix: 'http://www.rcsb.org/search?query=%7B%22parameters%22%3A%7B%22value%22%3A%22', suffix: '%22%7D%7D', title: '蛋白质结构数据库', type: 'search'},
+                        {name: 'Inact', logo: './logo/Inact.png', prefix: 'https://www.ebi.ac.uk/intact/interactions?conversationContext=', suffix: '', title: '蛋白相互作用数据库', type: 'search'},
+                        {name: 'Pfam', logo: './logo/Pfam.png', prefix: 'http://pfam.xfam.org/search/keyword?query=', suffix: '', title: '蛋白质家族信息数据库', type: 'search'},
+                        {name: 'InterPro', logo: './logo/InterPro.png', prefix: 'http://www.ebi.ac.uk/interpro/search/text/', suffix: '/?page=1#table', title: '蛋白质Domain信息数据库', type: 'search'},
+                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: '信号肽及亚细胞定位预测', type: 'search'},
+                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: '蛋白质磷酸化位点预测', type: 'direct'},
+                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: '蛋白质PTM&分选等位点预测', type: 'direct'},
+                        {name: 'Ensembi', logo: './logo/Ensembi.png', prefix: 'http://asia.ensembl.org/Multi/Search/Results?q=', suffix: ';site=ensembl_all', title: '动物基因组数据库', type: 'search'},
+                        {name: 'ProteinAtlas', logo: './logo/proteinatlas.png', prefix: 'https://www.proteinatlas.org/search/', suffix: '', title: '多维度基因表达数据', type: 'search'},
+                        {name: 'GTEx', logo: './logo/GTEx.png', prefix: 'https://www.gtexportal.org/home/gene/', suffix: '', title: '综合型基因表达数据库', type: 'search'}
                     ]
                 },
                 drug: {
                     id: 'drug',
-                    title: 'Drug Design Databases and Online Tools',
+                    title: '药物设计数据库及在线工具',
                     tools: [
-                        {name: 'ChemBL', logo: './logo/ChemBL.png', prefix: 'https://www.ebi.ac.uk/chembl/g/#search_results/all/query=', suffix: '', title: 'Bioactivity Database', type: 'search'},
-                        {name: 'PubChem', logo: './logo/PubChem.png', prefix: 'https://pubchem.ncbi.nlm.nih.gov/#query=', suffix: '', title: 'Compound Database', type: 'search'},
-                        {name: 'DrugBank', logo: './logo/DrugBank.png', prefix: 'https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=drugs', title: 'Drug Information Database', type: 'search'},
-                        {name: 'BindingDB', logo: './logo/BindingDB.png', prefix: 'https://www.bindingdb.org/bind/tabLuceneResult.jsp?thisInput=', suffix: '&submit=Go', title: 'Biomolecular Binding Database', type: 'search'},
-                        {name: 'IUPHAR', logo: './logo/IUPHAR.png', prefix: 'https://www.guidetopharmacology.org/GRAC/DatabaseSearchForward?searchString=', suffix: '&searchCategories=all&species=none&type=all&comments=includeComments&order=rank&submit=Search+Database', title: 'Pharmacology Database', type: 'search'},
-                        {name: 'RPBS', logo: './logo/RPBS.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#welcome', suffix: '', title: 'Comprehensive Drug Design Support Website', type: 'direct'},
-                        {name: 'CavityPlus', logo: './logo/CavityPlus.png', prefix: 'http://www.pkumdl.cn:8000/cavityplus/computation.php', suffix: '', title: 'Protein Binding Site Analysis Tool', type: 'direct'},
-                        {name: 'SwissADME', logo: './logo/SwissADME.png', prefix: 'http://www.swissadme.ch/', suffix: '', title: 'Small Molecule ADME Property Prediction', type: 'direct'},
-                        {name: 'ADMETlab', logo: './logo/ADMETlab.png', prefix: 'http://admet.scbdd.com/home/index/', suffix: '', title: 'Small Molecule Pharmacokinetic Property Prediction', type: 'direct'},
-                        {name: 'ChemSAR', logo: './logo/ChemSAR.png', prefix: 'http://chemsar.scbdd.com/home/index/', suffix: '', title: 'Ligand-Based Drug Screening', type: 'direct'},
-                        {name: 'DeepScreening', logo: './logo/DeepScreening.png', prefix: 'http://deepscreening.xielab.net/screening', suffix: '', title: 'Deep Learning-Based Compound SAR Screening', type: 'direct'}
+                        {name: 'ChemBL', logo: './logo/ChemBL.png', prefix: 'https://www.ebi.ac.uk/chembl/g/#search_results/all/query=', suffix: '', title: '生物活性数据库', type: 'search'},
+                        {name: 'PubChem', logo: './logo/PubChem.png', prefix: 'https://pubchem.ncbi.nlm.nih.gov/#query=', suffix: '', title: '化合物数据库', type: 'search'},
+                        {name: 'DrugBank', logo: './logo/DrugBank.png', prefix: 'https://www.drugbank.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=drugs', title: '药物信息数据库', type: 'search'},
+                        {name: 'BindingDB', logo: './logo/BindingDB.png', prefix: 'https://www.bindingdb.org/bind/tabLuceneResult.jsp?thisInput=', suffix: '&submit=Go', title: '生物分子结合数据库', type: 'search'},
+                        {name: 'IUPHAR', logo: './logo/IUPHAR.png', prefix: 'https://www.guidetopharmacology.org/GRAC/DatabaseSearchForward?searchString=', suffix: '&searchCategories=all&species=none&type=all&comments=includeComments&order=rank&submit=Search+Database', title: '药理学数据库', type: 'search'},
+                        {name: 'RPBS', logo: './logo/RPBS.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#welcome', suffix: '', title: '综合药物设计辅助分析网站', type: 'direct'},
+                        {name: 'CavityPlus', logo: './logo/CavityPlus.png', prefix: 'http://www.pkumdl.cn:8000/cavityplus/computation.php', suffix: '', title: '蛋白结构口袋分析工具', type: 'direct'},
+                        {name: 'SwissADME', logo: './logo/SwissADME.png', prefix: 'http://www.swissadme.ch/', suffix: '', title: '小分子ADME性质预测', type: 'direct'},
+                        {name: 'ADMETlab', logo: './logo/ADMETlab.png', prefix: 'http://admet.scbdd.com/home/index/', suffix: '', title: '小分子药物化学性质预测', type: 'direct'},
+                        {name: 'ChemSAR', logo: './logo/ChemSAR.png', prefix: 'http://chemsar.scbdd.com/home/index/', suffix: '', title: '配体基础的药物筛选', type: 'direct'},
+                        {name: 'DeepScreening', logo: './logo/DeepScreening.png', prefix: 'http://deepscreening.xielab.net/screening', suffix: '', title: '深度学习基础的化合物SAR筛选', type: 'direct'}
 
                     ]
                 },
                 metabolic: {
                     id: 'metabolic',
-                    title: 'Enzyme and Metabolic Databases and Online Tools',
+                    title: '酶与代谢数据库及在线工具',
                     tools: [
-                        {name: 'Reactome', logo: './logo/Reactome.png', prefix: 'https://reactome.org/content/query?q=', suffix: '&species=Homo+sapiens&species=Entries+without+species&cluster=true', title: 'Metabolic and Signaling Pathway Database', type: 'search'},
-                        {name: 'BRENDA', logo: './logo/BRENDA.png', prefix: 'https://www.brenda-enzymes.org/fulltext.php?Searchterm=', suffix: '', title: 'Enzyme Reaction Database', type: 'search'},
-                        {name: 'HMDB', logo: './logo/HMDB.png', prefix: 'https://hmdb.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=metabolites&button=', title: 'Human Metabolome Database', type: 'search'},
-                        {name: 'KEGG', logo: './logo/KEGG.png', prefix: 'https://www.genome.jp/dbget-bin/www_bfind_sub?mode=bfind&max_hit=1000&dbkey=alldb&keywords=', suffix: '', title: 'Metabolic Pathway Database', type: 'search'},
-                        {name: 'RAST', logo: './logo/RAST.png', prefix: 'https://rast.nmpdr.org/', suffix: '', title: 'Bacterial Genome Annotation Tool', type: 'direct'},
-                        {name: 'GeneSet', logo: './logo/GeneSet.png', prefix: 'http://www.webgestalt.org/', suffix: '', title: 'Pathway Enrichment Analysis', type: 'direct'},
-                        {name: 'SMASH', logo: './logo/SMASH.png', prefix: 'https://fungismash.secondarymetabolites.org/#!/start', suffix: '', title: 'Genome Secondary Metabolic Pathway Annotation', type: 'direct'},
-                        {name: 'JGI', logo: './logo/JGI.png', prefix: 'https://img.jgi.doe.gov/cgi-bin/pub/main.cgi?section=FindGenes&page=findGenes', suffix: '', title: 'Upstream/Downstream Gene Search', type: 'direct'},
-                        {name: 'Metacyc', logo: './logo/Metacyc.png', prefix: 'https://metacyc.org/', suffix: '', title: 'Refined Biological Metabolic Database', type: 'direct'}
+                        {name: 'Reactome', logo: './logo/Reactome.png', prefix: 'https://reactome.org/content/query?q=', suffix: '&species=Homo+sapiens&species=Entries+without+species&cluster=true', title: '代谢与信号通路数据库', type: 'search'},
+                        {name: 'BRENDA', logo: './logo/BRENDA.png', prefix: 'https://www.brenda-enzymes.org/fulltext.php?Searchterm=', suffix: '', title: '酶反应数据库', type: 'search'},
+                        {name: 'HMDB', logo: './logo/HMDB.png', prefix: 'https://hmdb.ca/unearth/q?utf8=%E2%9C%93&query=', suffix: '&searcher=metabolites&button=', title: '人类代谢数据库', type: 'search'},
+                        {name: 'KEGG', logo: './logo/KEGG.png', prefix: 'https://www.genome.jp/dbget-bin/www_bfind_sub?mode=bfind&max_hit=1000&dbkey=alldb&keywords=', suffix: '', title: '代谢通路数据库', type: 'search'},
+                        {name: 'RAST', logo: './logo/RAST.png', prefix: 'https://rast.nmpdr.org/', suffix: '', title: '细菌基因组注释工具', type: 'direct'},
+                        {name: 'GeneSet', logo: './logo/GeneSet.png', prefix: 'http://www.webgestalt.org/', suffix: '', title: '通路富集分析', type: 'direct'},
+                        {name: 'SMASH', logo: './logo/SMASH.png', prefix: 'https://fungismash.secondarymetabolites.org/#!/start', suffix: '', title: '基因组次生代谢通路注释', type: 'direct'},
+                        {name: 'JGI', logo: './logo/JGI.png', prefix: 'https://img.jgi.doe.gov/cgi-bin/pub/main.cgi?section=FindGenes&page=findGenes', suffix: '', title: '上下游基因查找', type: 'direct'},
+                        {name: 'Metacyc', logo: './logo/Metacyc.png', prefix: 'https://metacyc.org/', suffix: '', title: '生物代谢精制数据库', type: 'direct'}
                     ]
                 },
                 biostru: {
                     id: 'biostru',
-                    title: 'Biological Structure Databases, Modeling and Prediction Tools',
+                    title: '生物结构数据库、建模与预测工具',
                     tools: [
-                        {name: 'OPM', logo: 'logo/OPM.png', prefix: 'https://opm.phar.umich.edu/proteins?search=', suffix: '', title: 'Membrane Protein Structure Database', type: 'search'},
-                        {name: 'AlphaFoldDB', logo: 'logo/AF2.png', prefix: 'https://alphafold.ebi.ac.uk/search/text/', suffix: '', title: 'Database of proteins predicted by AlphaFold2', type: 'search'},
-                        {name: '3DBeacons', logo: 'logo/3DBeacons.png', prefix: 'https://www.ebi.ac.uk/pdbe/pdbe-kb/3dbeacons/search/', suffix: '', title: 'Comprehensive protein structure database with experimental, predicted, and dynamic structures', type: 'search'},
-                        {name: 'DSSP', logo: './logo/DSSP.png', prefix: 'https://mrs.cmbi.umcn.nl/entry?db=dssp&nr=94883&rq=', suffix: '', title: 'DSSP Information Query for PDB', type: 'search'},
-                        {name: 'I-TASSER', logo: './logo/I-TASSER.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/I-TASSER/', suffix: '', title: 'Homology Modeling Tool', type: 'direct'},
-                        {name: 'QUARK', logo: './logo/QUARK.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/QUARK/', suffix: '', title: 'Protein Folding Prediction', type: 'direct'},
-                        {name: 'Robetta', logo: './logo/Robetta.png', prefix: 'http://new.robetta.org/submit.php', suffix: '', title: 'Integrated Protein Prediction Methods', type: 'direct'},
-                        {name: 'Swiss Model', logo: './logo/Swiss.png', prefix: 'https://swissmodel.expasy.org/interactive/', suffix: '', title: 'Simple Homology Modeling', type: 'direct'},
-                        {name: 'RNAFold', logo: './logo/RNAFold.png', prefix: 'http://rna.tbi.univie.ac.at/cgi-bin/RNAWebSuite/RNAfold.cgi', suffix: '', title: 'RNA Secondary Structure Prediction', type: 'direct'},
-                        {name: '3D RNA', logo: './logo/3DRNA.png', prefix: 'http://biophy.hust.edu.cn/new/3dRNA/create', suffix: '', title: 'RNA Tertiary Structure Prediction', type: 'direct'},
-                        {name: 'AWSEM', logo: './logo/AWSEM.png', prefix: 'https://awsem.rice.edu/', suffix: '', title: 'Coarse-Grained Protein Folding', type: 'direct'},
-                        {name: 'PEPFold', logo: './logo/PEPFold.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3', suffix: '', title: 'Peptide Folding and Docking', type: 'direct'},
+                        {name: 'OPM', logo: 'logo/OPM.png', prefix: 'https://opm.phar.umich.edu/proteins?search=', suffix: '', title: '膜蛋白结构数据库', type: 'search'},
+                        {name: 'AlphaFoldDB', logo: 'logo/AF2.png', prefix: 'https://alphafold.ebi.ac.uk/search/text/', suffix: '', title: '强大的蛋白质结构预测工具AlphaFold2所预测的蛋白质的数据库', type: 'search'},
+                        {name: '3DBeacons', logo: 'logo/3DBeacons.png', prefix: 'https://www.ebi.ac.uk/pdbe/pdbe-kb/3dbeacons/search/', suffix: '', title: '综合实验结构、预测结构、动态结构的蛋白结构数据库', type: 'search'},
+                        {name: 'DSSP', logo: './logo/DSSP.png', prefix: 'https://mrs.cmbi.umcn.nl/entry?db=dssp&nr=94883&rq=', suffix: '', title: 'PDB对应的DSSP信息查询', type: 'search'},
+                        {name: 'I-TASSER', logo: './logo/I-TASSER.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/I-TASSER/', suffix: '', title: '同源建模工具', type: 'direct'},
+                        {name: 'QUARK', logo: './logo/QUARK.png', prefix: 'https://zhanglab.ccmb.med.umich.edu/QUARK/', suffix: '', title: '蛋白质折叠预测', type: 'direct'},
+                        {name: 'Robetta', logo: './logo/Robetta.png', prefix: 'http://new.robetta.org/submit.php', suffix: '', title: '整合蛋白质预测方法', type: 'direct'},
+                        {name: 'Swiss Model', logo: './logo/Swiss.png', prefix: 'https://swissmodel.expasy.org/interactive/', suffix: '', title: '简单同源建模', type: 'direct'},
+                        {name: 'RNAFold', logo: './logo/RNAFold.png', prefix: 'http://rna.tbi.univie.ac.at/cgi-bin/RNAWebSuite/RNAfold.cgi', suffix: '', title: 'RNA二级结构预测', type: 'direct'},
+                        {name: '3D RNA', logo: './logo/3DRNA.png', prefix: 'http://biophy.hust.edu.cn/new/3dRNA/create', suffix: '', title: 'RNA三级结构预测', type: 'direct'},
+                        {name: 'AWSEM', logo: './logo/AWSEM.png', prefix: 'https://awsem.rice.edu/', suffix: '', title: '粗粒度模拟的蛋白质折叠', type: 'direct'},
+                        {name: 'PEPFold', logo: './logo/PEPFold.png', prefix: 'https://mobyle.rpbs.univ-paris-diderot.fr/cgi-bin/portal.py#forms::PEP-FOLD3', suffix: '', title: '多肽折叠预测及对接', type: 'direct'},
                     ]
                 },
                 bioinfo: {
                     id: 'bioinfo',
-                    title: 'Bioinformatics Tools and Resources',
+                    title: '生物信息学工具与资源',
                     tools: [
-                        {name: 'Map', logo: './logo/Map.png', prefix: 'https://www.uniprot.org/uploadlists/', suffix: '', title: 'Database Entry Mapping Tool', type: 'direct'},
-                        {name: 'BLAST', logo: './logo/BLAST.png', prefix: 'https://blast.ncbi.nlm.nih.gov/Blast.cgi', suffix: '', title: 'Sequence Alignment Software', type: 'direct'},
-                        {name: 'String', logo: './logo/String.png', prefix: 'https://string-db.org/cgi/network.pl', suffix: '', title: 'Protein Interaction Analysis Database', type: 'direct'},
-                        {name: 'CDHIT', logo: './logo/CDHIT.png', prefix: 'http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi', suffix: '', title: 'Biological Sequence Clustering Analysis', type: 'direct'},
-                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: 'Signal Peptide and Subcellular Localization Prediction', type: 'search'},
-                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: 'Protein Phosphorylation Site Prediction', type: 'direct'},
-                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: 'Protein PTM & Sorting Site Prediction', type: 'direct'},
-                        {name: 'GPS', logo: './logo/GPS.png', prefix: 'https://sumo.biocuckoo.cn/index.php', suffix: '', title: 'Protein Modification Prediction', type: 'direct'},
-                        {name: 'HMMER', logo: './logo/HMMER.png', prefix: 'https://www.ebi.ac.uk/Tools/hmmer/search/phmmer', suffix: '', title: 'Protein Sequence Search', type: 'direct'},
-                        {name: 'DALI', logo: './logo/DALI.png', prefix: 'http://ekhidna2.biocenter.helsinki.fi/dali/', suffix: '', title: 'Protein Structure Search', type: 'direct'},
-                        {name: 'MAFFT', logo: './logo/MAFFT.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/mafft/', suffix: '', title: 'Multiple Sequence Alignment Software', type: 'direct'},
-                        {name: 'MUSCLE', logo: './logo/MUSCLE.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/muscle/', suffix: '', title: 'High-Quality Protein Sequence Alignment', type: 'direct'},
-                        {name: 'ESPript', logo: './logo/ESPript.png', prefix: 'http://espript.ibcp.fr/ESPript/cgi-bin/ESPript.cgi', suffix: '', title: 'Multiple Sequence Alignment Visualization Tool', type: 'direct'},
-                        {name: 'Color', logo: './logo/Color.png', prefix: 'https://www.cgl.ucsf.edu/chimerax/docs/user/commands/colornames.html', suffix: '', title: 'Chimera Color Palette', type: 'direct'},
-                        {name: 'Weblogo', logo: './logo/Weblogo.png', prefix: 'http://weblogo.threeplusone.com/create.cgi', suffix: '', title: 'Sequence Conservation Visualization', type: 'direct'},
-                        {name: 'ISO', logo: './logo/ISO.png', prefix: 'http://wiki.tgilab.org/ISOexpresso/', suffix: '', title: 'Differential Gene Expression Analysis Tool', type: 'direct'},
-                        {name: 'TCGA', logo: './logo/TCGA.png', prefix: 'https://portal.gdc.cancer.gov/', suffix: '', title: 'Comprehensive Cancer Dataset (TCGA)', type: 'direct'},
-                        {name: 'cBioPortal', logo: './logo/cBioPortal.png', prefix: 'https://www.cbioportal.org/', suffix: '', title: 'TCGA Dataset Analysis Tool', type: 'direct'},
-                        {name: 'GEPIA', logo: './logo/GEPIA.png', prefix: 'http://gepia.cancer-pku.cn/', suffix: '', title: 'Cancer Gene Expression Analysis Tool', type: 'direct'},
-                        {name: 'LINCS', logo: './logo/LINCS.png', prefix: 'http://lincsportal.ccs.miami.edu/dcic-portal/', suffix: '', title: 'Multi-Dimensional Gene Expression Dataset', type: 'direct'},
+                        {name: 'Map', logo: './logo/Map.png', prefix: 'https://www.uniprot.org/uploadlists/', suffix: '', title: '不同数据库间条目Map工具', type: 'direct'},
+                        {name: 'BLAST', logo: './logo/BLAST.png', prefix: 'https://blast.ncbi.nlm.nih.gov/Blast.cgi', suffix: '', title: '序列比对软件', type: 'direct'},
+                        {name: 'String', logo: './logo/String.png', prefix: 'https://string-db.org/cgi/network.pl', suffix: '', title: '蛋白质互作分析数据库', type: 'direct'},
+                        {name: 'CDHIT', logo: './logo/CDHIT.png', prefix: 'http://weizhong-lab.ucsd.edu/cdhit-web-server/cgi-bin/index.cgi', suffix: '', title: '生物序列聚类分析', type: 'direct'},
+                        {name: 'SignIP', logo: './logo/SignIP.png', prefix: 'http://www.cbs.dtu.dk/services/SignalP/', suffix: '', title: '信号肽及亚细胞定位预测', type: 'search'},
+                        {name: 'PPSP', logo: './logo/PPSP.png', prefix: 'http://ppsp.biocuckoo.org/', suffix: '', title: '蛋白质磷酸化位点预测', type: 'direct'},
+                        {name: 'DTU', logo: './logo/DTU.png', prefix: 'http://www.cbs.dtu.dk/services/', suffix: '', title: '蛋白质PTM&分选等位点预测', type: 'direct'},
+                        {name: 'GPS', logo: './logo/GPS.png', prefix: 'https://sumo.biocuckoo.cn/index.php', suffix: '', title: '蛋白质修饰预测', type: 'direct'},
+                        {name: 'HMMER', logo: './logo/HMMER.png', prefix: 'https://www.ebi.ac.uk/Tools/hmmer/search/phmmer', suffix: '', title: '蛋白质序列搜库', type: 'direct'},
+                        {name: 'DALI', logo: './logo/DALI.png', prefix: 'http://ekhidna2.biocenter.helsinki.fi/dali/', suffix: '', title: '蛋白质结构搜库', type: 'direct'},
+                        {name: 'MAFFT', logo: './logo/MAFFT.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/mafft/', suffix: '', title: '多序列比对软件', type: 'direct'},
+                        {name: 'MUSCLE', logo: './logo/MUSCLE.png', prefix: 'https://www.ebi.ac.uk/Tools/msa/muscle/', suffix: '', title: '高质量蛋白质序列比对', type: 'direct'},
+                        {name: 'ESPript', logo: './logo/ESPript.png', prefix: 'http://espript.ibcp.fr/ESPript/cgi-bin/ESPript.cgi', suffix: '', title: '多序列比对作图工具', type: 'direct'},
+                        {name: 'Color', logo: './logo/Color.png', prefix: 'https://www.cgl.ucsf.edu/chimerax/docs/user/commands/colornames.html', suffix: '', title: 'Chimera颜色板', type: 'direct'},
+                        {name: 'Weblogo', logo: './logo/Weblogo.png', prefix: 'http://weblogo.threeplusone.com/create.cgi', suffix: '', title: '序列保守性可视化', type: 'direct'},
+                        {name: 'ISO', logo: './logo/ISO.png', prefix: 'http://wiki.tgilab.org/ISOexpresso/', suffix: '', title: '差异基因表达分析工具', type: 'direct'},
+                        {name: 'TCGA', logo: './logo/TCGA.png', prefix: 'https://portal.gdc.cancer.gov/', suffix: '', title: 'TCGA综合癌症数据集', type: 'direct'},
+                        {name: 'cBioPortal', logo: './logo/cBioPortal.png', prefix: 'https://www.cbioportal.org/', suffix: '', title: 'TCGA数据集分析工具', type: 'direct'},
+                        {name: 'GEPIA', logo: './logo/GEPIA.png', prefix: 'http://gepia.cancer-pku.cn/', suffix: '', title: '癌症基因表达分析工具', type: 'direct'},
+                        {name: 'LINCS', logo: './logo/LINCS.png', prefix: 'http://lincsportal.ccs.miami.edu/dcic-portal/', suffix: '', title: '多维基因表达数据集', type: 'direct'},
                     ]
                 },
                 experiment: {
                     id: 'experiment',
-                    title: 'Wet Lab Support Online Tools',
+                    title: '湿实验所用辅助在线工具',
                     tools: [
-                        {name: 'sgRNA', logo: './logo/sgRNA.png', prefix: 'https://zlab.bio/guide-design-resources', suffix: '', title: 'sgRNA Design Tool', type: 'direct'},
-                        {name: 'HHpred', logo: './logo/HHpred.png', prefix: 'https://toolkit.tuebingen.mpg.de/tools/hhpred', suffix: '', title: 'PDB Modeling Template Search, Can be Used to Find Similar Proteins for Crystallization Conditions', type: 'direct'},
-                        {name: 'PeptideCutter', logo: './logo/PeptideCutter.png', prefix: 'https://web.expasy.org/peptide_cutter/', suffix: '', title: 'Protein Cleavage Site Prediction', type: 'direct'},
-                        {name: 'ProtParam', logo: './logo/ProtParam.png', prefix: 'https://web.expasy.org/protparam/', suffix: '', title: 'Basic Protein Property Prediction', type: 'direct'},
-                        {name: 'ProteInfer', logo: './logo/ProteInfer.png', prefix: 'https://google-research.github.io/proteinfer/', suffix: '', title: 'Protein Function Prediction', type: 'direct'},
-                        {name: 'KASS', logo: './logo/KASS.png', prefix: 'https://www.genome.jp/tools/kaas/', suffix: '', title: 'Genome Annotation Tool', type: 'direct'},
+                        {name: 'sgRNA', logo: './logo/sgRNA.png', prefix: 'https://zlab.bio/guide-design-resources', suffix: '', title: 'sgRNA设计工具', type: 'direct'},
+                        {name: 'HHpred', logo: './logo/HHpred.png', prefix: 'https://toolkit.tuebingen.mpg.de/tools/hhpred', suffix: '', title: 'PDB建模模板查找、可用于搜索相似蛋白查找结晶条件', type: 'direct'},
+                        {name: 'PeptideCutter', logo: './logo/PeptideCutter.png', prefix: 'https://web.expasy.org/peptide_cutter/', suffix: '', title: '蛋白质酶切位点预测', type: 'direct'},
+                        {name: 'ProtParam', logo: './logo/ProtParam.png', prefix: 'https://web.expasy.org/protparam/', suffix: '', title: '蛋白质基本性质预测', type: 'direct'},
+                        {name: 'ProteInfer', logo: './logo/ProteInfer.png', prefix: 'https://google-research.github.io/proteinfer/', suffix: '', title: '蛋白质功能预测', type: 'direct'},
+                        {name: 'KASS', logo: './logo/KASS.png', prefix: 'https://www.genome.jp/tools/kaas/', suffix: '', title: '基因组注释工具', type: 'direct'},
                     ]
                 }
             },
@@ -556,7 +557,7 @@
         ];
 
         // Current language
-        let currentLang = 'en';
+        let currentLang = 'zh';
 
         // Function to switch language
         function switchLanguage(lang) {
